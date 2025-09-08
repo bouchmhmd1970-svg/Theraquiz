@@ -1,16 +1,15 @@
-/*========== MedBreeze UI – تصميم طبي هادئ ==========*/
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+  /*========== GlobalEdu UI – منصة دراسية عالمية ==========*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-start: #f0f9ff;
-  --bg-end: #ffffff;
-  --card-bg: #ffffff;
-  --primary: #2a9d8f;
-  --secondary: #ffb703;
-  --text-main: #264653;
-  --text-sub: #6c757d;
-  --shadow: rgba(42, 157, 143, 0.08);
-  --radius: 14px;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --primary: #005f73;
+  --secondary: #ffdd00;
+  --text: #001219;
+  --text-sub: #495057;
+  --shadow: rgba(0, 18, 25, 0.06);
+  --radius: 12px;
 }
 
 * {
@@ -20,22 +19,21 @@
 }
 
 body {
-  font-family: 'Cairo', sans-serif;
-  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
-  background-attachment: fixed;
-  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 .container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 40px;
-  background: var(--card-bg);
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 48px;
+  background: var(--card);
   border-radius: var(--radius);
-  box-shadow: 0 8px 32px var(--shadow);
+  box-shadow: 0 4px 20px var(--shadow);
   animation: fadeIn 0.6s ease;
 }
 
@@ -46,14 +44,14 @@ body {
 
 h1, h2, h3 {
   font-weight: 600;
-  margin-bottom: 20px;
-  color: var(--text-main);
+  margin-bottom: 24px;
+  color: var(--text);
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 }
 
 button {
@@ -61,38 +59,60 @@ button {
   transition: all 0.3s ease;
 }
 
-/*========== الأزرار الرئيسية ==========*/
-.nav-buttons,
+/* أزرار المميزات – شبيهة بـ Coursera */
+.feature-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.feature-buttons button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 95, 115, 0.2);
+  transition: all 0.3s ease;
+}
+
+.feature-buttons button:hover {
+  background: #004052;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
+}
+
+/* أزرار التنقل – بسيطة ومريحة */
 .main-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 30px;
   justify-content: center;
-  overflow-x: auto;
 }
 
-.nav-buttons button,
 .main-buttons button {
-  background: linear-gradient(135deg, var(--primary), #34d399);
-  color: #fff;
+  background: var(--secondary);
+  color: #000;
   border: none;
-  padding: 18px 36px;
-  border-radius: 50px;
-  font-size: 18px;
-  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(42, 157, 143, 0.25);
-  flex: 1 1 220px;
-  text-align: center;
-  min-width: 180px;
+  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.25);
+  transition: all 0.3s ease;
 }
 
-.nav-buttons button:hover,
 .main-buttons button:hover {
-  background: linear-gradient(135deg, #21867a, var(--primary));
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(42, 157, 143, 0.35);
+  background: #e6c200;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.35);
 }
 
 /* زر تحميل التطبيق */
@@ -103,51 +123,169 @@ button {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 16px 32px;
-  border-radius: 50px;
+  padding: 14px 24px;
+  border-radius: 8px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(42, 157, 143, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
   z-index: 999;
   display: none;
 }
 
 .install-btn:hover {
-  background: #21867a;
+  background: #004052;
   transform: translateY(-2px);
 }
 
-/*========== Responsive ==========*/
-@media (max-width: 800px) {
-  .nav-buttons button,
-  .main-buttons button {
-    flex: 1 1 45%;
-    font-size: 16px;
-    padding: 16px 24px;
-  }
+/* صفحات Profile */
+.profile-container,
+.secure-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
-@media (max-width: 500px) {
-  .nav-buttons button,
-  .main-buttons button {
-    flex: 1 1 100%;
-    font-size: 16px;
-    padding: 14px 20px;
-  }
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--card);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px var(--shadow);
 }
 
-/*========== Dark Mode ==========*/
+#avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+}
+
+.section-card {
+  background: var(--card);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.sub-card,
+.cert-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin: 12px 0;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.status.active {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.status.expired {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+/* IdeaBox */
+#ideaForm label {
+  display: block;
+  margin: 16px 0 6px;
+  font-weight: 500;
+}
+
+#ideaForm input,
+#ideaForm select,
+#ideaForm textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+#ideaForm button {
+  background: var(--secondary);
+  color: #000;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+#ideaForm button:hover {
+  background: #e6c200;
+  transform: translateY(-2px);
+}
+
+#success {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f0f9ff;
+  border-left: 5px solid var(--primary);
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* Secure Register */
+.secure-container input,
+.secure-container select,
+.secure-container textarea {
+  margin-bottom: 16px;
+}
+
+.secure-container button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 95, 115, 0.25);
+  transition: all 0.3s ease;
+}
+
+.secure-container button:hover {
+  background: #004052;
+  transform: translateY(-2px);
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: var(--primary);
+  margin-top: 20px;
+}
+
+.error {
+  color: #dc3545;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+/* Dark Mode */
 body.dark {
-  --bg-start: #0d1b2a;
-  --bg-end: #1b263b;
-  --card-bg: #415a77;
-  --text-main: #e0e1dd;
+  --bg: #0d1b2a;
+  --card: #415a77;
+  --text: #e0e1dd;
   --text-sub: #778da9;
   --shadow: rgba(0, 0, 0, 0.25);
 }
 
-body.dark .container,
+body.dark .card,
 body.dark input,
 body.dark select,
 body.dark textarea {
@@ -156,4 +294,25 @@ body.dark textarea {
   border-color: #778da9;
 }
 
-/*========== باقي التصميمات حسب حاجتك ==========*/
+body.dark .options label {
+  background: #778da9;
+  color: #e0e1dd;
+}
+
+body.dark .options label:hover {
+  background: #5c677d;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px;
+    margin: 20px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  button {
+    width: 100%;
+  }
+}
