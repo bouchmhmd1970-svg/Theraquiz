@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,20 +6,17 @@
   <link rel="stylesheet" href="style.css">
 
   <!-- PWA -->
-  <link rel="manifest" 
-
-href="manifest.json">
+  <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2a9d8f">
+
+  <!-- iOS support -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-
-
-mobile-web-app-title" content="TheraQuiz">
+  <meta name="apple-mobile-web-app-title" content="TheraQuiz">
 
   <!-- أيقونات -->
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-
   <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 </head>
 <body>
@@ -28,49 +24,39 @@ mobile-web-app-title" content="TheraQuiz">
     <h1>🎓 TheraQuiz – طب بالدارجة</h1>
 
     <!-- أزرار التنقل -->
-
     <div class="main-buttons">
       <button onclick="window.open('profile-full.html', '_blank')">👤 ملفي الشخصي</button>
       <button onclick="window.open('idea.html', '_blank')">💡 شاركنا فكرتك</button>
-      <button 
-
-onclick="window.open('secure-register.html', '_blank')">🔐 تسجيل آمن ودفع</button>
+      <button onclick="window.open('secure-register.html', '_blank')">🔐 تسجيل آمن ودفع</button>
     </div>
 
     <!-- Quiz مثال -->
     <section id="quiz">
       <h2>📝 سؤال تجريبي</h2>
       <p>ما هو لون الدم الطبيعي؟</p>
-
       <form>
         <label><input type="radio" name="q" value="a"> أزرق</label><br>
         <label><input type="radio" name="q" value="b"> أحمر</label><br>
-        <label><input type="radio" name="q" value="c"> أخضر</
-
-label><br>
+        <label><input type="radio" name="q" value="c"> أخضر</label><br>
         <label><input type="radio" name="q" value="d"> أصفر</label><br>
       </form>
       <button id="nextBtn" onclick="nextQuestion()">التالي</button>
     </section>
 
     <!-- زر تحميل التطبيق -->
-
     <button id="installBtn" class="install-btn">📱 تحميل التطبيق</button>
   </div>
 
   <!-- Scripts -->
   <script src="profile-full.js"></script>
   <script src="idea.js"></script>
-  <script src="secure-
-
-register.js"></script>
+  <script src="secure-register.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="pwa.js"></script>
 
-  <!-- تسجيل Service Worker -->
+  <!-- Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
-
       navigator.serviceWorker.register("sw.js")
         .then(() => console.log("✅ Service Worker مسجل"))
         .catch(err => console.error("❌ Service Worker فشل:", err));
@@ -79,11 +65,9 @@ register.js"></script>
     // نتحقق إذا التطبيق يفتح كـ PWA (standalone)
     window.addEventListener("load", () => {
       if (window.matchMedia("(display-mode: standalone)").matches) {
-        alert("🎉 مرحباً بك في تطبيق TheraQuiz – 
-
-طب بالدارجة!");
+        alert("🎉 مرحباً بك في تطبيق TheraQuiz – طب بالدارجة!");
       }
     });
   </script>
 </body>
-</html>
+  </html>
