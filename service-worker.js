@@ -1,4 +1,3 @@
-
 const CACHE_NAME = "theraquiz-cache-v1";
 const ASSETS = [
   "index.html",
@@ -9,9 +8,7 @@ const ASSETS = [
 ];
 
 // Install
-self.addEventListener("i
-
-nstall", event => {
+self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(ASSETS);
@@ -20,7 +17,6 @@ nstall", event => {
 });
 
 // Fetch
-
 self.addEventListener("fetch", event => {
   event.respondWith(
     caches.match(event.request).then(response => {
@@ -35,7 +31,6 @@ self.addEventListener("activate", event => {
     caches.keys().then(keys =>
       Promise.all(
         keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-
       )
     )
   );
