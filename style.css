@@ -1,24 +1,95 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
+/*========== MedBreeze UI – تصميم طبي هادئ ==========*/
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+
+:root {
+  --bg-start: #f0f9ff;
+  --bg-end: #ffffff;
+  --card-bg: #ffffff;
+  --primary: #2a9d8f;
+  --secondary: #ffb703;
+  --text-main: #264653;
+  --text-sub: #6c757d;
+  --shadow: rgba(42, 157, 143, 0.08);
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #333;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
   max-width: 900px;
   margin: 40px auto;
+  padding: 40px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px var(--shadow);
+  animation: fadeIn 0.6s ease;
+}
 
-  padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-main);
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: -0.5px;
 }
 
 button {
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+}
+
+/* أزرار رئيسية */
+.nav-buttons,
+.main-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.nav-buttons button,
+.main-buttons button {
+  background: linear-gradient(135deg, var(--primary), #34d399);
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(42, 157, 143, 0.25);
+  transition: all 0.3s ease;
+}
+
+.nav-buttons button:hover,
+.main-buttons button:hover {
+  background: linear-gradient(135deg, #21867a, var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(42, 157, 143, 0.35);
 }
 
 /* زر تحميل التطبيق */
@@ -26,14 +97,13 @@ button {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #2a9d8f;
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 14px 24px;
   border-radius: 50px;
   font-size: 16px;
   font-weight: 600;
-
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(42, 157, 143, 0.35);
   z-index: 999;
@@ -43,7 +113,6 @@ button {
 .install-btn:hover {
   background: #21867a;
   transform: translateY(-2px);
-
 }
 
 /* صفحات Profile */
@@ -56,30 +125,27 @@ button {
 
 .profile-section {
   display: flex;
-
   align-items: center;
   gap: 20px;
-  background: #fff;
+  background: var(--card-bg);
   padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px var(--shadow);
 }
 
 #avatar {
   width: 120px;
   height: 120px;
-
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #2a9d8f;
+  border: 4px solid var(--primary);
 }
 
 .section-card {
-  background: #fff;
+  background: var(--card-bg);
   padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px var(--shadow);
 }
 
 .sub-card,
@@ -91,8 +157,7 @@ button {
   margin: 10px 0;
   background: #f8f9fa;
   border-radius: 8px;
-
-  border-left: 4px solid #2a9d8f;
+  border-left: 4px solid var(--primary);
 }
 
 .status.active {
@@ -103,7 +168,6 @@ button {
 .status.expired {
   color: #dc3545;
   font-weight: 600;
-
 }
 
 /* IdeaBox */
@@ -116,7 +180,6 @@ button {
 #ideaForm input,
 #ideaForm select,
 #ideaForm textarea {
-
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -125,10 +188,9 @@ button {
 }
 
 #ideaForm button {
-  background: #ffb703;
+  background: var(--secondary);
   color: #000;
   border: none;
-
   padding: 14px 28px;
   border-radius: 50px;
   font-size: 16px;
@@ -147,12 +209,10 @@ button {
   margin-top: 20px;
   padding: 16px;
   background: #e6f7f5;
-  border-left: 5px solid 
-
-#2a9d8f;
+  border-left: 5px solid var(--primary);
   border-radius: 8px;
   font-weight: 600;
-  color: #264653;
+  color: var(--text-main);
 }
 
 /* Secure Register */
@@ -160,11 +220,10 @@ button {
 .secure-container select,
 .secure-container textarea {
   margin-bottom: 15px;
-
 }
 
 .secure-container button {
-  background: #2a9d8f;
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 14px 28px;
@@ -172,7 +231,6 @@ button {
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-
   box-shadow: 0 4px 12px rgba(42, 157, 143, 0.25);
   transition: all 0.3s ease;
 }
@@ -180,19 +238,59 @@ button {
 .secure-container button:hover {
   background: #21867a;
   transform: translateY(-2px);
-
 }
 
 .loading {
   text-align: center;
   font-size: 18px;
-  color: #2a9d8f;
+  color: var(--primary);
   margin-top: 20px;
 }
 
 .error {
   color: #dc3545;
   font-weight: 600;
-
   margin-top: 10px;
+}
+
+/* Dark Mode */
+body.dark {
+  --bg-start: #0d1b2a;
+  --bg-end: #1b263b;
+  --card-bg: #415a77;
+  --text-main: #e0e1dd;
+  --text-sub: #778da9;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+body.dark .card,
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background: #415a77;
+  color: #e0e1dd;
+  border-color: #778da9;
+}
+
+body.dark .options label {
+  background: #778da9;
+  color: #e0e1dd;
+}
+
+body.dark .options label:hover {
+  background: #5c677d;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px;
+    margin: 20px;
+  }
+  h1 {
+    font-size: 1.6rem;
+  }
+  button {
+    width: 100%;
+  }
 }
