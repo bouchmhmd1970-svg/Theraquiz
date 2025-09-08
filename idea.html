@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>IdeaBox – شاركنا فكرتك</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+
+    <h1>💡 IdeaBox – شاركنا فكرتك</h1>
+    <p>فكرة جديدة؟ تصميم؟ محتوى؟ مشكلة؟ شاركناها!</p>
+
+    <form id="ideaForm">
+      <label>الاسم (اختياري):</label>
+      <input type="text" name="name" placeholder="أحمد 
+
+بومحمد">
+
+      <label>نوع الفكرة:</label>
+      <select name="type" required>
+        <option value="">اختر نوعًا</option>
+        <option value="feature">✨ ميزة جديدة</option>
+
+        <option value="design">🎨 تصميم أو واجهة</option>
+        <option value="content">📘 محتوى أو درس</option>
+        <option value="bug">🐛 مشكلة تقنية</option>
+        <option value="other">🤔 أخرى</option>
+
+      </select>
+
+      <label>عنوان الفكرة:</label>
+      <input type="text" name="title" placeholder="مثلاً: أضيفوا لعبة ذاكرة جديدة" required>
+
+      <label>وصف مفصل:</label>
+      <textarea 
+
+name="description" rows="6" placeholder="اشرح فكرتك بالتفصيل..." required></textarea>
+
+      <label>صورة أو فيديو (اختياري):</label>
+      <input type="file" name="file" accept="image/*,video/*">
+
+
+      <button type="submit">إرسال الفكرة</button>
+    </form>
+
+    <div id="success" class="hidden">✅ شكرًا! سنراجع فكرتك خلال 48 ساعة.</div>
+  </div>
+
+  <script src="idea.js"></script>
+</body>
+</html>
