@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon Espace Complet – TheraQuiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container profile-container">
+    <h1>👤 Mon Espace Complet</h1>
+
+    <!-- الملف الشخصي -->
+    <section class="profile-section">
+      <img id="avatar" src="https://via.placeholder.com/120" alt="Avatar">
+
+      <div class="info">
+        <h2 id="fullName">أحمد بومحمد</h2>
+        <p>السنة: <span id="yearText">P3</span></p>
+        <p>التخصص: <span id="specText">Cardiologie</span></p>
+        <p>النقاط الكلية: <span 
+
+id="totalPoints">245</span> نقطة</p>
+        <button onclick="editProfile()">✏️ تعديل الملف</button>
+      </div>
+    </section>
+
+    <!-- الاشتراكات -->
+    <section class="section-card">
+      <h2>📦 Mes 
+
+Abonnements</h2>
+      <div id="subsList"></div>
+      <button onclick="addSub()">➕ إضافة اشتراك جديد</button>
+    </section>
+
+    <!-- الشهادات -->
+    <section class="section-card">
+
+      <h2>🏆 Mes Certificats</h2>
+      <div id="certsList"></div>
+    </section>
+
+    <!-- الإحصائيات -->
+    <section class="section-card">
+      <h2>📈 Statistiques</h2>
+      <canvas 
+
+id="statsChart" width="400" height="200"></canvas>
+      <div id="statsText"></div>
+    </section>
+
+    <!-- إعدادات الحساب -->
+    <section class="section-card settings">
+      <h2>⚙️ إعدادات 
+
+الحساب</h2>
+      <label>تغيير الصورة:</label>
+      <input type="file" id="avatarInput" accept="image/*" onchange="changeAvatar()">
+
+      <label>تغيير السنة:</label>
+      <select 
+
+id="yearSelect" onchange="changeYear()">
+        <option value="1">P1</option>
+        <option value="2">P2</option>
+        <option value="3">P3</option>
+        <option value="4">P4</option>
+        <option 
+
+value="5">P5</option>
+        <option value="6">P6</option>
+        <option value="7">P7</option>
+      </select>
+
+      <label>
+        <input type="checkbox" id="notifToggle" onchange="toggleNotif()
+
+">
+        تفعيل الإشعارات
+      </label>
+    </section>
+  </div>
+
+  <script src="profile-full.js"></script>
+</body>
+</html>
