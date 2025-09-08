@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="TheraQuiz">
 
-  <!-- أيقونات -->
+  <!-- Icons -->
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
@@ -22,56 +22,55 @@
 <body>
   <div class="container">
     <h1>🎓 TheraQuiz – طب بالدارجة</h1>
- <!-- أزرار المميزات الأساسية -->
-<button onclick="window.open('study.html', '_blank')">🧑‍⚕️ دراسة مع شخص افتراضي</button>
-<button onclick="window.open('exam.html', '_blank')">🎯 محاكي الامتحان</button>
-<button onclick="window.open('medchess.html', '_blank')">♟️ شطرنج طبي</button>
-<button onclick="window.open('memomed.html', '_blank')">🧠 ذاكرة طبية</button>
-    <!-- أزرار التنقل -->
+
+    <!-- Boutons principaux -->
     <div class="main-buttons">
-      <button onclick="window.open('profile-full.html', '_blank')">👤 ملفي الشخصي</button>
-      <button onclick="window.open('idea.html', '_blank')">💡 شاركنا فكرتك</button>
-      <button onclick="window.open('secure-register.html', '_blank')">🔐 تسجيل آمن ودفع</button>
+      <button onclick="window.open('study.html', '_blank')">🧑‍⚕️ Étudier avec perso</button>
+      <button onclick="window.open('exam.html', '_blank')">🎯 Simulateur Exam</button>
+      <button onclick="window.open('medchess.html', '_blank')">♟️ MedChess</button>
+      <button onclick="window.open('memomed.html', '_blank')">🧠 MemoMed</button>
+      <button onclick="window.open('profile-full.html', '_blank')">👤 Profil</button>
+      <button onclick="window.open('idea.html', '_blank')">💡 Partager idée</button>
+      <button onclick="window.open('secure-register.html', '_blank')">🔐 Inscription sécurisée</button>
     </div>
 
-    <!-- Quiz مثال -->
+    <!-- Quiz exemple -->
     <section id="quiz">
-      <h2>📝 سؤال تجريبي</h2>
-      <p>ما هو لون الدم الطبيعي؟</p>
+      <h2>📝 Question test</h2>
+      <p>Quelle est la couleur du sang normal ?</p>
       <form>
-        <label><input type="radio" name="q" value="a"> أزرق</label><br>
-        <label><input type="radio" name="q" value="b"> أحمر</label><br>
-        <label><input type="radio" name="q" value="c"> أخضر</label><br>
-        <label><input type="radio" name="q" value="d"> أصفر</label><br>
+        <label><input type="radio" name="q" value="a"> Bleu</label><br>
+        <label><input type="radio" name="q" value="b"> Rouge</label><br>
+        <label><input type="radio" name="q" value="c"> Vert</label><br>
+        <label><input type="radio" name="q" value="d"> Jaune</label><br>
       </form>
-      <button id="nextBtn" onclick="nextQuestion()">التالي</button>
+      <button id="nextBtn" onclick="nextQuestion()">Suivant</button>
     </section>
 
-    <!-- زر تحميل التطبيق -->
-    <button id="installBtn" class="install-btn">📱 تحميل التطبيق</button>
+    <!-- Bouton PWA Installer -->
+    <button id="installBtn" class="install-btn">📱 Installer l'application</button>
   </div>
 
   <!-- Scripts -->
   <script src="profile-full.js"></script>
   <script src="idea.js"></script>
   <script src="secure-register.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
   <script src="pwa.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Service Worker -->
+  <!-- Service Worker et PWA -->
   <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("sw.js")
-        .then(() => console.log("✅ Service Worker مسجل"))
-        .catch(err => console.error("❌ Service Worker فشل:", err));
+        .then(() => console.log("✅ Service Worker enregistré"))
+        .catch(err => console.error("❌ Échec Service Worker:", err));
     }
 
-    // نتحقق إذا التطبيق يفتح كـ PWA (standalone)
     window.addEventListener("load", () => {
       if (window.matchMedia("(display-mode: standalone)").matches) {
-        alert("🎉 مرحباً بك في تطبيق TheraQuiz – طب بالدارجة!");
+        alert("🎉 Bienvenue sur TheraQuiz – طب بالدارجة!");
       }
     });
   </script>
 </body>
-  </html> 
+</html>
