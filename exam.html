@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>ExamSim – محاكي الامتحان</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container exam-container">
+    <h1>🎯 ExamSim – محاكي الامتحان الطبي</h1>
+
+    <div id="setup">
+      <label>السنة:</label>
+      <select id="year">
+        <option value="1">P1</option>
+        <option value="2">P2</option>
+        <option value="3">P3</option>
+        <option value="4">P4</option>
+        <option value="5">P5</option>
+        <option value="6">P6</option>
+        <option value="7">P7</option>
+      </select>
+
+      <label>المادة:</label>
+      <select id="matiere">
+        <option value="cardio">Cardiologie</option>
+        <option value="anatomie">Anatomie</option>
+        <option value="physio">Physiologie</option>
+      </select>
+
+      <label>عدد الأسئلة:</label>
+      <select id="count">
+        <option value="20">20 سؤال</option>
+        <option value="40">40 سؤال</option>
+        <option value="60">60 سؤال</option>
+      </select>
+
+      <label>الوقت:</label>
+      <select id="time">
+        <option value="30">30 دقيقة</option>
+        <option value="60">1 ساعة</option>
+        <option value="120">2 ساعة</option>
+      </select>
+
+      <button onclick="startExam()">ابدأ الامتحان</button>
+    </div>
+
+    <div id="exam" class="hidden">
+      <div class="timer" id="timer">60:00</div>
+      <div class="question-counter" id="counter">سؤال 1 / 40</div>
+      <div id="question"></div>
+      <button id="nextBtn" onclick="nextQuestion()">التالي</button>
+    </div>
+
+    <div id="result" class="hidden">
+      <h2>🎉 الامتحان انتهى!</h2>
+      <p id="resultText"></p>
+      <button onclick="generatePDF()">تحميل الشهادة</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let questions = [
+      {
+        q: "Quelle est la paroi cardiaque la plus épaisse ?",
+        options: ["A/ Droite","B/ Gauche","C/ Identique"],
+        correct: "b"
+      },
+      {
+        q: "Où se trouve l'ostium du sinus coronaire ?",
+        options: ["A/ Oreillette droite","B/ Oreillette gauche","C/ Ventricule droit"],
+        correct: "a"
+      }
+      // يمكنك إكمال حتى 60 سؤال
+    ];
+
+    let current = 0;
+    let correctCount = 0;
+    let timeLeft;
+    let timerInterval;
+
+    function startExam() {
+      const count = parseInt(document.getElementById("count").value);
+      const time = parseInt(document.getElementById("time").value);
+      timeLeft = time * 60;
+
+      questions = questions.slice(0, count); // نأخذ عدد الأسئلة المختار
+
+      document.getElementById("setup").classList.add("hidden");
+      document.getElementById("exam").classList.remove("hidden");
+
+      loadQuestion();
+      updateTimer();
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) {
+          endExam(true);
+        }
+      }, 1000);
+    }
+
+    function loadQuestion() {
+      const q = questions[current];
+      document.getElementById("counter").textContent = `سؤال ${current + 1} / ${questions.length}`;
+      document.getElementById("question").innerHTML = `
+        <div class='question'>
+          <p>${q.q}</p>
+          <div class='options'>
+            ${q.options.map(opt => `<label><input type='radio' name='q' value='${opt[0]}'> ${opt}</label>`).join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    function nextQuestion() {
+      const val = document.querySelector("input[name='q']:checked")?.value;
+      if (!val) return alert("اختر إجابة");
+      if (val === questions[current].correct) correctCount++;
+      current++;
+      if (current < questions.length) {
+        loadQuestion();
+      } else {
+        endExam(false);
+      }
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      document.getElementById("timer").textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function endExam(timeUp) {
+      clearInterval(timerInterval);
+      document.getElementById("exam").classList.add("hidden");
+      document.getElementById("result").classList.remove("hidden");
+
+      const pct = Math.round((correctCount / questions.length) * 100);
+      const rank = Math.floor(Math.random() * 50) + 1; // مؤقتًا – نربطها بقاعدة بيانات لاحقًا
+
+      document.getElementById("resultText").innerHTML = `
+        <p><strong>نتيجتك:</strong> ${correctCount}/${questions.length} (${pct}%)</p>
+        <p><strong>رتبتك:</strong> ${rank} من 50 طالب</p>
+        ${timeUp ? "<p>⏰ انتهى الوقت!</p>" : ""}
+      `;
+    }
+
+    function generatePDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      const name = localStorage.getItem("tempName") || "طالب";
+      doc.setFontSize(20);
+      doc.text("شهادة امتحان – ExamSim", 20, 20);
+      doc.setFontSize(14);
+      doc.text(`الاسم: ${name}`, 20, 40);
+      doc.text(`النتيجة: ${correctCount}/${questions
