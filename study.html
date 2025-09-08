@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>MedFocus – Study with me</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container study-container">
+    <h1>🧑‍⚕️ MedFocus – Study with me</h1>
+    <p>اختر جنسك والمدة – ابدأ الدراسة مع شخص افتراضي.</p>
+
+    <div class="setup">
+      <label>الجنس:</label>
+      <select id="gender">
+        <option value="man">👨 رجل</option>
+        <option value="woman">👩 امرأة</option>
+      </select>
+
+      <label>المدة:</label>
+      <select id="duration">
+        <option value="25">25 دقيقة</option>
+        <option value="45">45 دقيقة</option>
+        <option value="60">60 دقيقة</option>
+      </select>
+
+      <button onclick="startStudy()">ابدأ الدراسة</button>
+    </div>
+
+    <div id="session" class="hidden">
+      <video id="studyVideo" autoplay muted loop>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        متصفحك لا يدعم الفيديو.
+      </video>
+      <div class="timer" id="timer">25:00</div>
+      <button onclick="stopStudy()">إيقاف</button>
+    </div>
+  </div>
+
+  <script>
+    let timeLeft;
+    let timerInterval;
+
+    function startStudy() {
+      const gender = document.getElementById("gender").value;
+      const duration = parseInt(document.getElementById("duration").value);
+      timeLeft = duration * 60;
+
+      document.querySelector(".setup").classList.add("hidden");
+      document.getElementById("session").classList.remove("hidden");
+
+      const video = document.getElementById("studyVideo");
+      video.src = gender === "woman" 
+        ? "https://www.w3schools.com/html/mov_bbb.mp4" 
+        : "https://www.w3schools.com/html/mov_bbb.mp4"; // استبدل لاحقًا بفيديو صامت حقيقي
+
+      video.play();
+      updateTimer();
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+        if (timeLeft <= 0) {
+          stopStudy(true);
+        }
+      }, 1000);
+    }
+
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      document.getElementById("timer").textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function stopStudy(completed = false) {
+      clearInterval(timerInterval);
+      document.getElementById("studyVideo").pause();
+      document.getElementById("session").classList.add("hidden");
+      document.querySelector(".setup").classList.remove("hidden");
+
+      if (completed) {
+        alert("✅ أحسنت! لقد أكملت الدراسة – +5 نقاط!");
+        // نزيد النقاط داخل المنصة لاحقًا
+        localStorage.setItem("studyScore", (parseInt(localStorage.getItem("studyScore")) || 0) + 5);
+      }
+    }
+  </script>
+</body>
+</html>
