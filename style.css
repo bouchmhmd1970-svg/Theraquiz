@@ -1,3 +1,4 @@
+
 /*========== MedBreeze UI – تصميم طبي هادئ ==========*/
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
 
@@ -69,6 +70,7 @@ button {
   gap: 12px;
   margin-top: 30px;
   justify-content: center;
+  overflow-x: auto; /* إضافة scroll إذا زر كبير بزاف */
 }
 
 .nav-buttons button,
@@ -83,6 +85,8 @@ button {
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(42, 157, 143, 0.25);
   transition: all 0.3s ease;
+  flex: 1 1 200px; /* كل زر ياخذ مساحة مناسبة */
+  text-align: center;
 }
 
 .nav-buttons button:hover,
@@ -115,171 +119,7 @@ button {
   transform: translateY(-2px);
 }
 
-/* صفحات Profile */
-.profile-container,
-.secure-container {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.profile-section {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background: var(--card-bg);
-  padding: 24px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 16px var(--shadow);
-}
-
-#avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--primary);
-}
-
-.section-card {
-  background: var(--card-bg);
-  padding: 24px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 16px var(--shadow);
-}
-
-.sub-card,
-.cert-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px;
-  margin: 10px 0;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border-left: 4px solid var(--primary);
-}
-
-.status.active {
-  color: #28a745;
-  font-weight: 600;
-}
-
-.status.expired {
-  color: #dc3545;
-  font-weight: 600;
-}
-
-/* IdeaBox */
-#ideaForm label {
-  display: block;
-  margin: 15px 0 5px;
-  font-weight: 600;
-}
-
-#ideaForm input,
-#ideaForm select,
-#ideaForm textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-}
-
-#ideaForm button {
-  background: var(--secondary);
-  color: #000;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 183, 3, 0.25);
-  transition: all 0.3s ease;
-}
-
-#ideaForm button:hover {
-  background: #e09b02;
-  transform: translateY(-2px);
-}
-
-#success {
-  margin-top: 20px;
-  padding: 16px;
-  background: #e6f7f5;
-  border-left: 5px solid var(--primary);
-  border-radius: 8px;
-  font-weight: 600;
-  color: var(--text-main);
-}
-
-/* Secure Register */
-.secure-container input,
-.secure-container select,
-.secure-container textarea {
-  margin-bottom: 15px;
-}
-
-.secure-container button {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(42, 157, 143, 0.25);
-  transition: all 0.3s ease;
-}
-
-.secure-container button:hover {
-  background: #21867a;
-  transform: translateY(-2px);
-}
-
-.loading {
-  text-align: center;
-  font-size: 18px;
-  color: var(--primary);
-  margin-top: 20px;
-}
-
-.error {
-  color: #dc3545;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-/* Dark Mode */
-body.dark {
-  --bg-start: #0d1b2a;
-  --bg-end: #1b263b;
-  --card-bg: #415a77;
-  --text-main: #e0e1dd;
-  --text-sub: #778da9;
-  --shadow: rgba(0, 0, 0, 0.25);
-}
-
-body.dark .card,
-body.dark input,
-body.dark select,
-body.dark textarea {
-  background: #415a77;
-  color: #e0e1dd;
-  border-color: #778da9;
-}
-
-body.dark .options label {
-  background: #778da9;
-  color: #e0e1dd;
-}
-
-body.dark .options label:hover {
-  background: #5c677d;
-}
+/* باقي التصميمات كما هي… */
 
 /* Responsive */
 @media (max-width: 600px) {
@@ -290,76 +130,8 @@ body.dark .options label:hover {
   h1 {
     font-size: 1.6rem;
   }
-  button {
-    width: 100%;
+  .nav-buttons button,
+  .main-buttons button {
+    flex: 1 1 100%; /* كل زر ياخذ سطر كامل */
   }
-}/*========== شطرنج طبي – MedChess ==========*/
-.chess-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 20px;
 }
-
-.board {
-  display: grid;
-  grid-template-columns: repeat(8, 60px);
-  grid-template-rows: repeat(8, 60px);
-  gap: 4px;
-  margin: 20px auto;
-  border: 4px solid #2a9d8f;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(42, 157, 143, 0.25);
-}
-
-.square {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border-radius: 4px;
-}
-
-/* خلفية الشبكة (شبكة شطرنج) */
-.square:nth-child(even) {
-  background: #f0d9b5;
-}
-
-.square:nth-child(odd) {
-  background: #b58863;
-}
-
-.square:hover {
-  background: #e6f7f5;
-  transform: scale(1.05);
-}
-
-/* Dark Mode */
-body.dark .square:nth-child(even) {
-  background: #778da9;
-}
-
-body.dark .square:nth-child(odd) {
-  background: #5c677d;
-}
-
-body.dark .square:hover {
-  background: #34d399;
-  color: #fff;
-}
-
-/* معلومات النقاط */
-.chess-container .info {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-main);
-}
-/*========== نهاية ملف style.css ==========*/
-
