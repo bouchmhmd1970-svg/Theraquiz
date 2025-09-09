@@ -2,122 +2,87 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plateforme Médicale</title>
+  <title>TheraQuiz – منصة تعليمية</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2 class="logo">TheraQuiz</h2>
+      <ul>
+        <li onclick="showSection('profil')">👤 Profil</li>
+        <li onclick="showSection('abonnement')">🔐 Abonnement</li>
+        <li onclick="showSection('statistiques')">📊 Statistiques</li>
+        <li onclick="showSection('idee')">💡 Idée</li>
+        <li onclick="showSection('study')">📚 Study with me</li>
+        <li onclick="showSection('examen')">📝 Simuler un examen</li>
+        <li onclick="showSection('cours')">📖 Cours</li>
+        <li onclick="showSection('quiz')">📝 Quiz</li>
+        <li onclick="showSection('playlist')">🎶 Playlists</li>
+        <li onclick="showSection('notes')">🗒️ Mes notes</li>
+      </ul>
+    </aside>
 
-  <!-- شاشة تسجيل الدخول -->
-  <div class="login-screen" id="loginScreen">
-    <div class="login-box">
-      <h2>Bienvenue</h2>
-      <p>Connectez-vous pour continuer</p>
-      <input type="text" id="loginInput" placeholder="Email ou Numéro de téléphone">
-      <input type="password" id="passwordInput" placeholder="Mot de passe">
-      <button onclick="login()">Se connecter</button>
-    </div>
-  </div>
+    <!-- Main Content -->
+    <main class="content">
+      <section id="profil" class="section active">
+        <h1>👤 Profil</h1>
+        <p>هنا يبان ملفك الشخصي.</p>
+      </section>
 
-  <!-- الواجهة الرئيسية -->
-  <div class="app hidden" id="app">
+      <section id="abonnement" class="section">
+        <h1>🔐 Abonnement</h1>
+        <p>إدارة الاشتراك تاعك.</p>
+      </section>
 
-    <!-- القائمة الجانبية -->
-    <div class="sidebar">
-      <h2>📚 Platform</h2>
-      <button onclick="showSection('cours')">Dossiers</button>
-      <button onclick="showSection('quiz')">Quiz</button>
-      <button onclick="showSection('playlist')">Playlists</button>
-      <button onclick="showSection('notes')">Mes Notes</button>
-      <button onclick="showSection('espace')">Mon Espace</button>
-      <button onclick="logout()">🚪 Déconnexion</button>
-    </div>
+      <section id="statistiques" class="section">
+        <h1>📊 Statistiques</h1>
+        <p>إحصائيات التقدم والنتائج.</p>
+      </section>
 
-    <!-- المحتوى -->
-    <div class="content">
+      <section id="idee" class="section">
+        <h1>💡 Idée</h1>
+        <p>شاركنا اقتراحاتك.</p>
+      </section>
 
-      <!-- قسم الدروس -->
-      <div id="cours" class="section">
-        <h1>📖 Dossiers Médicaux</h1>
-        <p>Ici vous trouverez tous vos cours et documents.</p>
-      </div>
+      <section id="study" class="section">
+        <h1>📚 Study with me</h1>
+        <p>جلسة مراجعة مع الآخرين.</p>
+      </section>
 
-      <!-- قسم Quiz -->
-      <div id="quiz" class="section hidden">
+      <section id="examen" class="section">
+        <h1>📝 Simuler un examen</h1>
+        <p>محاكاة امتحان كما في الواقع.</p>
+      </section>
+
+      <section id="cours" class="section">
+        <h1>📖 Cours</h1>
+        <p>قائمة الدروس.</p>
+      </section>
+
+      <section id="quiz" class="section">
         <h1>📝 Quiz</h1>
-        <p>Testez vos connaissances avec nos quiz interactifs.</p>
-      </div>
+        <p>اختبارات متعددة الخيارات.</p>
+      </section>
 
-      <!-- قسم Playlists -->
-      <div id="playlist" class="section hidden">
-        <h1>🎵 Playlists</h1>
-        <p>Regroupez vos cours préférés dans des listes personnalisées.</p>
-      </div>
+      <section id="playlist" class="section">
+        <h1>🎶 Playlists</h1>
+        <p>قائمة الفيديوهات التعليمية.</p>
+      </section>
 
-      <!-- قسم Notes -->
-      <div id="notes" class="section hidden">
-        <h1>🗒️ Mes Notes</h1>
-        <textarea id="notesArea" placeholder="Écrivez vos notes ici..."></textarea>
-      </div>
-
-      <!-- قسم Mon espace -->
-      <div id="espace" class="section hidden">
-        <h1>👤 Mon Espace</h1>
-        <button onclick="alert('Modifier fichier cliqué')">Modifier le fichier</button>
-        <button onclick="alert('Ajouter abonnement cliqué')">Ajouter un abonnement</button>
-      </div>
-
-    </div>
+      <section id="notes" class="section">
+        <h1>🗒️ Mes notes</h1>
+        <p>ملاحظاتك وحوايجك الخاصة.</p>
+      </section>
+    </main>
   </div>
 
   <script>
-    // التحقق إذا المستخدم مسجل من قبل
-    window.onload = function() {
-      const loggedIn = localStorage.getItem("loggedIn");
-      if (loggedIn === "true") {
-        document.getElementById("loginScreen").classList.add("hidden");
-        document.getElementById("app").classList.remove("hidden");
-      }
-
-      // جلب الملاحظات المخزنة
-      const savedNotes = localStorage.getItem("userNotes");
-      if (savedNotes) {
-        document.getElementById("notesArea").value = savedNotes;
-      }
-
-      // حفظ تلقائي للملاحظات عند الكتابة
-      document.getElementById("notesArea").addEventListener("input", function() {
-        localStorage.setItem("userNotes", this.value);
-      });
-    }
-
-    // تسجيل الدخول
-    function login() {
-      const loginInput = document.getElementById("loginInput").value;
-      const passwordInput = document.getElementById("passwordInput").value;
-
-      if (loginInput.trim() !== "" && passwordInput.trim() !== "") {
-        localStorage.setItem("loggedIn", "true");
-        document.getElementById("loginScreen").classList.add("hidden");
-        document.getElementById("app").classList.remove("hidden");
-      } else {
-        alert("Veuillez entrer vos identifiants !");
-      }
-    }
-
-    // تسجيل الخروج
-    function logout() {
-      localStorage.removeItem("loggedIn");
-      document.getElementById("app").classList.add("hidden");
-      document.getElementById("loginScreen").classList.remove("hidden");
-    }
-
-    // التنقل بين الأقسام
     function showSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
+      document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
     }
   </script>
-
 </body>
-        </html>
+  </html>
