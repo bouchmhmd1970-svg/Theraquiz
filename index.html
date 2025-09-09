@@ -1,68 +1,68 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>TheraQuiz Global – منصة طبية عالمية</title>
+  <title>TheraQuiz – طب بالدارجة</title>
   <link rel="stylesheet" href="style.css">
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#005f73">
+  <meta name="theme-color" content="#2a9d8f">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="TheraQuiz Global">
+  <meta name="apple-mobile-web-app-title" content="TheraQuiz">
+
+  <!-- أيقونات -->
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 </head>
-<body class="global-body">
-
-  <!-- Header – شبيه بـ MedSpaceDZ -->
-  <header class="global-header">
-    <div class="logo">TheraQuiz Global</div>
-    <div class="actions">
-      <button class="btn-icon" onclick="window.open('profile-full.html', '_blank')">👤</button>
-      <button class="btn-icon" onclick="window.open('secure-register.html', '_blank')">🔐</button>
-    </div>
+<body>
+  <!-- ✅ Navbar -->
+  <header class="navbar">
+    <div class="logo">🎓 TheraQuiz</div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">🏠 الرئيسية</a>
+      <a href="profile-full.html">👤 ملفي</a>
+      <a href="idea.html">💡 شارك فكرة</a>
+      <a href="secure-register.html">🔐 تسجيل ودفع</a>
+    </nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   </header>
 
-  <!-- القائمة الرئيسية – شبيهة بـ MedSpaceDZ -->
-  <main class="global-main">
-    <h2>المميزات الأساسية</h2>
-    <div class="cards-grid">
-      <div class="card" onclick="window.open('study.html', '_blank')">
-        <div class="icon">🧑‍⚕️</div>
-        <h3>دراسة مع ذكاء اصطناعي</h3>
-        <p>طالب في مكتبة – عداد تنازلي – ذكاء اصطناعي – نقاط.</p>
-      </div>
-      <div class="card" onclick="window.open('exam.html', '_blank')">
-        <div class="icon">🎯</div>
-        <h3>محاكي الامتحان</h3>
-        <p>امتحان طبي – وقته محدود – شهادة PDF – رتبة.</p>
-      </div>
-      <div class="card" onclick="window.open('medchess.html', '_blank')">
-        <div class="icon">♟️</div>
-        <h3>شطرنج طبي</h3>
-        <p>شطرنج برموز طبية – كل نقلة = نقاط – ذكاء.</p>
-      </div>
-      <div class="card" onclick="window.open('memomed.html', '_blank')">
-        <div class="icon">🧠</div>
-        <h3>ذاكرة طبية</h3>
-        <p>ذاكرة الأزواج الطبية – اكسب نقاط – استرخي.</p>
-      </div>
-    </div>
-  </main>
+  <div class="container">
+    <h1>🎓 TheraQuiz – طب بالدارجة</h1>
+    <p class="subtitle">منصة تعليمية بالدارجة الجزائرية خاصة بالطب 👨‍⚕️👩‍⚕️</p>
 
-  <!-- Footer – بسيط – عالمي -->
-  <footer class="global-footer">
-    <p>© 2025 TheraQuiz Global – منصة طبية بالدارجة الجزائرية</p>
-  </footer>
+    <!-- ✅ Buttons -->
+    <div class="main-buttons">
+      <button onclick="window.open('profile-full.html', '_blank')">👤 ملفي الشخصي</button>
+      <button onclick="window.open('idea.html', '_blank')">💡 شاركنا فكرتك</button>
+      <button onclick="window.open('secure-register.html', '_blank')">🔐 تسجيل آمن ودفع</button>
+    </div>
+
+    <!-- ✅ Quiz Section -->
+    <section id="quiz">
+      <h2>📝 سؤال تجريبي</h2>
+      <p>ما هو لون الدم الطبيعي؟</p>
+
+      <form>
+        <label><input type="radio" name="q" value="a"> أزرق</label><br>
+        <label><input type="radio" name="q" value="b"> أحمر</label><br>
+        <label><input type="radio" name="q" value="c"> أخضر</label><br>
+        <label><input type="radio" name="q" value="d"> أصفر</label><br>
+      </form>
+      <button id="nextBtn" onclick="nextQuestion()">التالي</button>
+    </section>
+
+    <!-- ✅ Install App -->
+    <button id="installBtn" class="install-btn">📱 تحميل التطبيق</button>
+  </div>
 
   <!-- Scripts -->
   <script src="profile-full.js"></script>
   <script src="idea.js"></script>
   <script src="secure-register.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="pwa.js"></script>
 
   <!-- Service Worker -->
@@ -73,12 +73,16 @@
         .catch(err => console.error("❌ Service Worker فشل:", err));
     }
 
-    // PWA check
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+
+    // ترحيب
     window.addEventListener("load", () => {
       if (window.matchMedia("(display-mode: standalone)").matches) {
-        alert("🎉 مرحباً بك في تطبيق TheraQuiz Global – منصة طبية عالمية!");
+        alert("🎉 مرحباً بك في تطبيق TheraQuiz – طب بالدارجة!");
       }
     });
   </script>
 </body>
-</html>
+      </html>
