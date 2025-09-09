@@ -1,4 +1,4 @@
-/*========== GlobalEdu UI – منصة دراسية عالمية ==========*/
+ن/*========== GlobalEdu UI – منصة دراسية عالمية ==========*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -208,7 +208,7 @@ body.dark .options label:hover {
 /* Responsive */
 @media (max-width: 600px) {
   .container {
-    padding: 24px;
+    padding: 24px; 
     margin: 20px;
   }
   h1 {
@@ -218,3 +218,123 @@ body.dark .options label:hover {
     width: 100%;
   }
   }
+/*========== AI StudyRoom – واجهة كبيرة – ذكاء اصطناعي ==========*/
+.study-body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.study-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.timer-container {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+}
+
+.timer {
+  font-size: 120px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  letter-spacing: 4px;
+}
+
+.status {
+  font-size: 24px;
+  color: #e0e0e0;
+  margin-top: 10px;
+}
+
+.setup {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+}
+
+.setup h2 {
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.time-options {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.time-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.time-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.stop-btn {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.stop-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.info {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
