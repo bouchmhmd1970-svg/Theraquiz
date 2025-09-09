@@ -2,59 +2,58 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>MedFocus – Study with me</title>
+  <title>AI StudyRoom – دراسة مع ذكاء اصطناعي</title>
   <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <div class="container study-container">
-    <h1>🧑‍⚕️ MedFocus – Study with me</h1>
-    <p>اختر جنسك والمدة – ابدأ الدراسة مع شخص افتراضي.</p>
+<body class="study-body">
 
-    <div class="setup">
-      <label>الجنس:</label>
-      <select id="gender">
-        <option value="man">👨 رجل</option>
-        <option value="woman">👩 امرأة</option>
-      </select>
+  <!-- واجهة كبيرة – لا حدود – عالمية -->
+  <div class="study-container">
+    <!-- خلفية فيديو: طالب في مكتبة (صامت) -->
+    <video id="bgVideo" autoplay muted loop class="bg-video">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      متصفحك لا يدعم الفيديو.
+    </video>
 
-      <label>المدة:</label>
-      <select id="duration">
-        <option value="25">25 دقيقة</option>
-        <option value="45">45 دقيقة</option>
-        <option value="60">60 دقيقة</option>
-      </select>
-
-      <button onclick="startStudy()">ابدأ الدراسة</button>
+    <!-- عداد تنازلي كبير -->
+    <div class="timer-container">
+      <div class="timer" id="timer">25:00</div>
+      <div class="status">جارٍ الدراسة...</div>
     </div>
 
-    <div id="session" class="hidden">
-      <video id="studyVideo" autoplay muted loop>
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-        متصفحك لا يدعم الفيديو.
-      </video>
-      <div class="timer" id="timer">25:00</div>
-      <button onclick="stopStudy()">إيقاف</button>
+    <!-- اختيار الوقت -->
+    <div class="setup">
+      <h2>اختر وقت الدراسة</h2>
+      <div class="time-options">
+        <button class="time-btn" onclick="startStudy(25)">25 دقيقة</button>
+        <button class="time-btn" onclick="startStudy(45)">45 دقيقة</button>
+        <button class="time-btn" onclick="startStudy(60)">60 دقيقة</button>
+        <button class="time-btn" onclick="startStudy(90)">90 دقيقة</button>
+      </div>
+    </div>
+
+    <!-- زر إيقاف -->
+    <button class="stop-btn" onclick="stopStudy()">إيقاف الدراسة</button>
+
+    <!-- معلومات النقاط -->
+    <div class="info">
+      <span>نقاطك: <strong id="score">0</strong></span>
+      <button onclick="saveScore()">💾 حفظ النقاط</button>
     </div>
   </div>
 
   <script>
     let timeLeft;
     let timerInterval;
+    let score = 0;
 
-    function startStudy() {
-      const gender = document.getElementById("gender").value;
-      const duration = parseInt(document.getElementById("duration").value);
-      timeLeft = duration * 60;
+    function startStudy(minutes) {
+      timeLeft = minutes * 60;
+      document.querySelector(".setup").style.display = "none";
+      document.querySelector(".stop-btn").style.display = "block";
+      document.querySelector(".info").style.display = "block";
 
-      document.querySelector(".setup").classList.add("hidden");
-      document.getElementById("session").classList.remove("hidden");
-
-      const video = document.getElementById("studyVideo");
-      video.src = gender === "woman" 
-        ? "https://www.w3schools.com/html/mov_bbb.mp4" 
-        : "https://www.w3schools.com/html/mov_bbb.mp4"; // استبدل لاحقًا بفيديو صامت حقيقي
-
-      video.play();
       updateTimer();
       timerInterval = setInterval(() => {
         timeLeft--;
@@ -73,15 +72,20 @@
 
     function stopStudy(completed = false) {
       clearInterval(timerInterval);
-      document.getElementById("studyVideo").pause();
-      document.getElementById("session").classList.add("hidden");
-      document.querySelector(".setup").classList.remove("hidden");
+      document.querySelector(".stop-btn").style.display = "none";
+      document.querySelector(".info").style.display = "none";
+      document.querySelector(".setup").style.display = "block";
 
       if (completed) {
-        alert("✅ أحسنت! لقد أكملت الدراسة – +5 نقاط!");
-        // نزيد النقاط داخل المنصة لاحقًا
-        localStorage.setItem("studyScore", (parseInt(localStorage.getItem("studyScore")) || 0) + 5);
+        score += minutes;
+        localStorage.setItem("studyScore", score);
+        alert("✅ أحسنت! لقد أكملت الدراسة – +" + minutes + " نقاط!");
       }
+    }
+
+    function saveScore() {
+      localStorage.setItem("studyScore", score);
+      alert("✅ تم حفظ نقاطك – كيما ترجع للأنترنت، نزيدهم لحسابك داخل TherQuiz!");
     }
   </script>
 </body>
