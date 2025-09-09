@@ -2,75 +2,99 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>TheraQuiz – طب بالدارجة</title>
+  <title>TheraQuiz – منصة طبية عالمية</title>
   <link rel="stylesheet" href="style.css">
 
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2a9d8f">
-
-  <!-- iOS support -->
+  <meta name="theme-color" content="#005f73">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="TheraQuiz">
-
-  <!-- Icons -->
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 </head>
 <body>
-  <div class="container">
-    <h1>🎓 TheraQuiz – طب بالدارجة</h1>
-
-    <!-- Boutons principaux -->
-    <div class="main-buttons">
-      <button onclick="window.open('study.html', '_blank')">🧑‍⚕️ Étudier avec perso</button>
-      <button onclick="window.open('exam.html', '_blank')">🎯 Simulateur Exam</button>
-      <button onclick="window.open('medchess.html', '_blank')">♟️ MedChess</button>
-      <button onclick="window.open('memomed.html', '_blank')">🧠 MemoMed</button>
-      <button onclick="window.open('profile-full.html', '_blank')">👤 Profil</button>
-      <button onclick="window.open('idea.html', '_blank')">💡 Partager idée</button>
-      <button onclick="window.open('secure-register.html', '_blank')">🔐 Inscription sécurisée</button>
+  <!-- Header عالمي -->
+  <header class="header">
+    <div class="logo">TheraQuiz</div>
+    <div class="actions">
+      <button class="btn-secondary" onclick="window.open('profile-full.html', '_blank')">👤 ملفي</button>
+      <button class="btn-secondary" onclick="window.open('secure-register.html', '_blank')">🔐 اشتراك</button>
     </div>
+  </header>
 
-    <!-- Quiz exemple -->
-    <section id="quiz">
-      <h2>📝 Question test</h2>
-      <p>Quelle est la couleur du sang normal ?</p>
-      <form>
-        <label><input type="radio" name="q" value="a"> Bleu</label><br>
-        <label><input type="radio" name="q" value="b"> Rouge</label><br>
-        <label><input type="radio" name="q" value="c"> Vert</label><br>
-        <label><input type="radio" name="q" value="d"> Jaune</label><br>
-      </form>
-      <button id="nextBtn" onclick="nextQuestion()">Suivant</button>
-    </section>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>🎓 منصة طبية عالمية – بالدارجة الجزائرية</h1>
+    <p>دراسة – امتحانات – ذاكرة – شطرنج – كل شيء طبي – بكل بساطة.</p>
+    <button class="btn-primary" onclick="window.open('study.html', '_blank')">🚀 ابدأ الآن</button>
+  </section>
 
-    <!-- Bouton PWA Installer -->
-    <button id="installBtn" class="install-btn">📱 Installer l'application</button>
-  </div>
+  <!-- المميزات الأساسية -->
+  <section class="features">
+    <h2>المميزات الأساسية</h2>
+    <div class="cards">
+      <div class="card" onclick="window.open('study.html', '_blank')">
+        <div class="icon">🧑‍⚕️</div>
+        <h3>دراسة مع شخص افتراضي</h3>
+        <p>دراسة هادئة مع شخص افتراضي – بوقت محدد – بنقاط.</p>
+      </div>
+      <div class="card" onclick="window.open('exam.html', '_blank')">
+        <div class="icon">🎯</div>
+        <h3>محاكي الامتحان</h3>
+        <p>امتحان طبي حقيقي – بوقت محدد – بشهادة PDF.</p>
+      </div>
+      <div class="card" onclick="window.open('medchess.html', '_blank')">
+        <div class="icon">♟️</div>
+        <h3>شطرنج طبي</h3>
+        <p>شطرنج بـ رموز طبية – كل نقلة = نقاط.</p>
+      </div>
+      <div class="card" onclick="window.open('memomed.html', '_blank')">
+        <div class="icon">🧠</div>
+        <h3>ذاكرة طبية</h3>
+        <p>ذاكرة الأزواج الطبية – اكسب نقاط – استرخي.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- أزرار التنقل -->
+  <section class="nav-section">
+    <h2>اكتشف المزيد</h2>
+    <div class="nav-buttons">
+      <button class="btn-secondary" onclick="window.open('profile-full.html', '_blank')">👤 ملفي الشخصي</button>
+      <button class="btn-secondary" onclick="window.open('idea.html', '_blank')">💡 شاركنا فكرتك</button>
+      <button class="btn-secondary" onclick="window.open('secure-register.html', '_blank')">🔐 اشتراك</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 TheraQuiz – منصة طبية بالدارجة الجزائرية</p>
+  </footer>
 
   <!-- Scripts -->
   <script src="profile-full.js"></script>
   <script src="idea.js"></script>
   <script src="secure-register.js"></script>
-  <script src="pwa.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="pwa.js"></script>
 
-  <!-- Service Worker et PWA -->
+  <!-- Service Worker -->
   <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("sw.js")
-        .then(() => console.log("✅ Service Worker enregistré"))
-        .catch(err => console.error("❌ Échec Service Worker:", err));
+        .then(() => console.log("✅ Service Worker مسجل"))
+        .catch(err => console.error("❌ Service Worker فشل:", err));
     }
 
+    // PWA check
     window.addEventListener("load", () => {
       if (window.matchMedia("(display-mode: standalone)").matches) {
-        alert("🎉 Bienvenue sur TheraQuiz – طب بالدارجة!");
+        alert("🎉 مرحباً بك في تطبيق TheraQuiz – منصة طبية عالمية!");
       }
     });
   </script>
 </body>
-</html>
+    </html>
