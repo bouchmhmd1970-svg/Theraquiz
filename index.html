@@ -2,87 +2,122 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>TheraQuiz – طب بالدارجة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plateforme Médicale</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2a9d8f">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="TheraQuiz">
-
-  <!-- أيقونات -->
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 </head>
 <body>
-  <!-- ✅ Navbar -->
-  <header class="navbar">
-    <div class="logo">🎓 TheraQuiz</div>
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html">🏠 الرئيسية</a>
-      <a href="profile-full.html">👤 ملفي</a>
-      <a href="idea.html">💡 شارك فكرة</a>
-      <a href="secure-register.html">🔐 تسجيل ودفع</a>
-    </nav>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  </header>
 
-  <div class="container">
-    <h1>🎓 TheraQuiz – طب بالدارجة</h1>
-    <p class="subtitle">منصة تعليمية بالدارجة الجزائرية خاصة بالطب 👨‍⚕️👩‍⚕️</p>
-
-    <!-- ✅ Buttons -->
-    <div class="main-buttons">
-      <button onclick="window.open('profile-full.html', '_blank')">👤 ملفي الشخصي</button>
-      <button onclick="window.open('idea.html', '_blank')">💡 شاركنا فكرتك</button>
-      <button onclick="window.open('secure-register.html', '_blank')">🔐 تسجيل آمن ودفع</button>
+  <!-- شاشة تسجيل الدخول -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-box">
+      <h2>Bienvenue</h2>
+      <p>Connectez-vous pour continuer</p>
+      <input type="text" id="loginInput" placeholder="Email ou Numéro de téléphone">
+      <input type="password" id="passwordInput" placeholder="Mot de passe">
+      <button onclick="login()">Se connecter</button>
     </div>
-
-    <!-- ✅ Quiz Section -->
-    <section id="quiz">
-      <h2>📝 سؤال تجريبي</h2>
-      <p>ما هو لون الدم الطبيعي؟</p>
-
-      <form>
-        <label><input type="radio" name="q" value="a"> أزرق</label><br>
-        <label><input type="radio" name="q" value="b"> أحمر</label><br>
-        <label><input type="radio" name="q" value="c"> أخضر</label><br>
-        <label><input type="radio" name="q" value="d"> أصفر</label><br>
-      </form>
-      <button id="nextBtn" onclick="nextQuestion()">التالي</button>
-    </section>
-
-    <!-- ✅ Install App -->
-    <button id="installBtn" class="install-btn">📱 تحميل التطبيق</button>
   </div>
 
-  <!-- Scripts -->
-  <script src="profile-full.js"></script>
-  <script src="idea.js"></script>
-  <script src="secure-register.js"></script>
-  <script src="pwa.js"></script>
+  <!-- الواجهة الرئيسية -->
+  <div class="app hidden" id="app">
 
-  <!-- Service Worker -->
+    <!-- القائمة الجانبية -->
+    <div class="sidebar">
+      <h2>📚 Platform</h2>
+      <button onclick="showSection('cours')">Dossiers</button>
+      <button onclick="showSection('quiz')">Quiz</button>
+      <button onclick="showSection('playlist')">Playlists</button>
+      <button onclick="showSection('notes')">Mes Notes</button>
+      <button onclick="showSection('espace')">Mon Espace</button>
+      <button onclick="logout()">🚪 Déconnexion</button>
+    </div>
+
+    <!-- المحتوى -->
+    <div class="content">
+
+      <!-- قسم الدروس -->
+      <div id="cours" class="section">
+        <h1>📖 Dossiers Médicaux</h1>
+        <p>Ici vous trouverez tous vos cours et documents.</p>
+      </div>
+
+      <!-- قسم Quiz -->
+      <div id="quiz" class="section hidden">
+        <h1>📝 Quiz</h1>
+        <p>Testez vos connaissances avec nos quiz interactifs.</p>
+      </div>
+
+      <!-- قسم Playlists -->
+      <div id="playlist" class="section hidden">
+        <h1>🎵 Playlists</h1>
+        <p>Regroupez vos cours préférés dans des listes personnalisées.</p>
+      </div>
+
+      <!-- قسم Notes -->
+      <div id="notes" class="section hidden">
+        <h1>🗒️ Mes Notes</h1>
+        <textarea id="notesArea" placeholder="Écrivez vos notes ici..."></textarea>
+      </div>
+
+      <!-- قسم Mon espace -->
+      <div id="espace" class="section hidden">
+        <h1>👤 Mon Espace</h1>
+        <button onclick="alert('Modifier fichier cliqué')">Modifier le fichier</button>
+        <button onclick="alert('Ajouter abonnement cliqué')">Ajouter un abonnement</button>
+      </div>
+
+    </div>
+  </div>
+
   <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("sw.js")
-        .then(() => console.log("✅ Service Worker مسجل"))
-        .catch(err => console.error("❌ Service Worker فشل:", err));
-    }
-
-    function toggleMenu() {
-      document.getElementById("navLinks").classList.toggle("show");
-    }
-
-    // ترحيب
-    window.addEventListener("load", () => {
-      if (window.matchMedia("(display-mode: standalone)").matches) {
-        alert("🎉 مرحباً بك في تطبيق TheraQuiz – طب بالدارجة!");
+    // التحقق إذا المستخدم مسجل من قبل
+    window.onload = function() {
+      const loggedIn = localStorage.getItem("loggedIn");
+      if (loggedIn === "true") {
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("app").classList.remove("hidden");
       }
-    });
+
+      // جلب الملاحظات المخزنة
+      const savedNotes = localStorage.getItem("userNotes");
+      if (savedNotes) {
+        document.getElementById("notesArea").value = savedNotes;
+      }
+
+      // حفظ تلقائي للملاحظات عند الكتابة
+      document.getElementById("notesArea").addEventListener("input", function() {
+        localStorage.setItem("userNotes", this.value);
+      });
+    }
+
+    // تسجيل الدخول
+    function login() {
+      const loginInput = document.getElementById("loginInput").value;
+      const passwordInput = document.getElementById("passwordInput").value;
+
+      if (loginInput.trim() !== "" && passwordInput.trim() !== "") {
+        localStorage.setItem("loggedIn", "true");
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("app").classList.remove("hidden");
+      } else {
+        alert("Veuillez entrer vos identifiants !");
+      }
+    }
+
+    // تسجيل الخروج
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      document.getElementById("app").classList.add("hidden");
+      document.getElementById("loginScreen").classList.remove("hidden");
+    }
+
+    // التنقل بين الأقسام
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
   </script>
+
 </body>
-      </html>
+        </html>
