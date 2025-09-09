@@ -1,104 +1,160 @@
-/*========== GlobalEdu UI – منصة طبية عالمية ==========*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-:root {
-  --bg: #ffffff;
-  --card: #ffffff;
-  --primary: #005f73;
-  --secondary: #ffdd00;
-  --text: #001219;
-  --text-sub: #495057;
-  --shadow: rgba(0, 18, 25, 0.06);
-  --radius: 12px;
-}
-
-* {
-  box-sizing: border-box;
+/* ===== Reset & Base ===== */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
   margin: 0;
   padding: 0;
+  color: #333;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+:root {
+  --primary: #2a9d8f;
+  --secondary: #264653;
+  --accent: #ffb703;
 }
 
-.global-header {
+/* ===== Navbar ===== */
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
-  background: var(--card);
-  box-shadow: 0 2px 8px var(--shadow);
-  border-radius: var(--radius);
-  margin-bottom: 40px;
+  background: var(--primary);
+  color: #fff;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary);
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.actions button {
-  margin-left: 12px;
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
 }
 
-.global-main {
-  padding: 0 40px;
+.navbar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
+.navbar .nav-links a:hover {
+  color: var(--accent);
 }
 
-.card {
-  background: var(--card);
-  padding: 32px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 20px var(--shadow);
+.menu-toggle {
+  display: none;
+  font-size: 24px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px var(--shadow);
+/* ===== Responsive Navbar ===== */
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--secondary);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 200px;
+    text-align: right;
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+
+    /* Animation */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+  }
+
+  .navbar .nav-links.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
 
-.card .icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-.card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
-}
-
-.card p {
-  font-size: 1rem;
-  color: var(--text-sub);
-}
-
-.global-footer {
-  text-align: center;
+/* ===== Container ===== */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
   padding: 20px;
-  font-size: 14px;
-  color: var(--text-sub);
-  margin-top: 60px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
-/* Dark Mode */
-body.dark {
-  --bg: #0d1b2a;
-  --card: #415a77;
-  --text: #e0e
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* ===== Buttons ===== */
+.main-buttons button {
+  margin: 10px;
+  padding: 14px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  background: var(--primary);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.main-buttons button:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+
+/* ===== Quiz ===== */
+#quiz {
+  margin-top: 30px;
+  text-align: left;
+}
+
+#quiz h2 {
+  margin-bottom: 10px;
+}
+
+#quiz button {
+  margin-top: 10px;
+  background: var(--accent);
+  color: #000;
+}
+
+/* ===== Install Button ===== */
+.install-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(42, 157, 143, 0.35);
+  z-index: 999;
+  display: none;
+}
+
+.install-btn:hover {
+  background: #21867a;
+  transform: translateY(-2px);
+  }
