@@ -3,9 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>TheraQuiz – منصة تعليمية</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ====== Reset & basic ====== */
+    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
+    body {background:#f0f2f5;}
+    button {cursor:pointer;}
+
+    /* ====== Login ====== */
+    .login-container {
+      width: 350px;
+      margin: 100px auto;
+      background:#fff; padding:30px; border-radius:8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .login-container h2 {text-align:center; margin-bottom:20px;}
+    .login-container input {
+      width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px;
+    }
+    .password-field {position:relative;}
+    #togglePassword {
+      position:absolute; right:10px; top:12px; cursor:pointer;
+    }
+    .login-container button {
+      width:100%; padding:10px; margin-top:10px; background:#007bff; color:#fff; border:none; border-radius:5px;
+    }
+    .login-container .forgot {margin-top:10px; text-align:right; font-size:0.9em;}
+    .login-container .forgot span {color:#007bff; cursor:pointer;}
+
+    /* ====== Dashboard ====== */
+    .app {display:none; flex-wrap:nowrap; min-height:100vh;}
+    .sidebar {width:200px; background:#007bff; color:#fff; padding:20px;}
+    .sidebar .logo {text-align:center; margin-bottom:20px;}
+    .sidebar ul {list-style:none;}
+    .sidebar ul li {padding:10px 0; cursor:pointer;}
+    .sidebar ul li:hover {background:rgba(255,255,255,0.2);}
+    .content {flex:1; padding:20px;}
+    .section {display:none;}
+    .section.active {display:block;}
+    .section h1 {margin-bottom:15px;}
+    .section input, .section textarea, .section select, .section button {margin:5px 0; padding:8px;}
+  </style>
 </head>
 <body>
+
   <!-- Login Section -->
   <div class="login-container" id="loginContainer">
     <h2>TheraQuiz</h2>
@@ -25,7 +65,7 @@
   </div>
 
   <!-- Dashboard -->
-  <div class="app" id="dashboard" style="display:none;">
+  <div class="app" id="dashboard">
     <!-- Sidebar -->
     <aside class="sidebar">
       <h2 class="logo">TheraQuiz</h2>
@@ -51,13 +91,10 @@
         <form>
           <label>Nom complet:</label>
           <input type="text" placeholder="أحمد بومحمد">
-
           <label>Email:</label>
           <input type="email" placeholder="exemple@mail.com">
-
           <label>Téléphone:</label>
           <input type="tel" placeholder="06xx xx xx xx">
-
           <button type="submit">💾 Sauvegarder</button>
         </form>
       </section>
@@ -141,7 +178,13 @@
   </div>
 
   <script>
-    // Toggle password
+    // ===== Users data =====
+    const users = [
+      { email: "test@mail.com", password: "1234" },
+      { email: "hiba@mail.com", password: "abcd" }
+    ];
+
+    // ===== Toggle password =====
     const togglePassword = document.getElementById("togglePassword");
     const password = document.getElementById("password");
 
@@ -150,25 +193,32 @@
       password.setAttribute("type", type);
     });
 
-    // Login form
+    // ===== Login form =====
     document.getElementById("loginForm").addEventListener("submit", function(e){
       e.preventDefault();
-      // هنا تقدر تزيد تحقق من البيانات
-      document.getElementById("loginContainer").style.display = "none";
-      document.getElementById("dashboard").style.display = "flex";
+      const emailPhone = document.getElementById("emailPhone").value;
+      const pass = document.getElementById("password").value;
+
+      const user = users.find(u => u.email === emailPhone && u.password === pass);
+      if(user){
+        document.getElementById("loginContainer").style.display = "none";
+        document.getElementById("dashboard").style.display = "flex";
+      } else {
+        alert("الإيميل أو كلمة السر غير صحيحة");
+      }
     });
 
-    // Sidebar section switch
+    // ===== Sidebar section switch =====
     function showSection(id) {
       document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
       document.getElementById(id).classList.add("active");
     }
 
-    // Forgot password (simple alert)
+    // ===== Forgot password (simple) =====
     document.getElementById("forgotPassword").addEventListener("click", () => {
       const emailPhone = document.getElementById("emailPhone").value;
-      if(emailPhone) {
-        alert("Un code de confirmation a été envoyé à " + emailPhone);
+      if(emailPhone){
+        alert("Un code de confirmation a été envoyé à " + emailPhone + " (مثال: 1234)");
       } else {
         alert("اكتب الايميل أو رقم الهاتف تاعك");
       }
