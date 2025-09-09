@@ -152,7 +152,46 @@ body {
   border: none;
   cursor: pointer;
 }
+/* نسيت كلمة المرور – عالمي */
+#forgotForm,
+#codeForm {
+  margin-top: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
 
+#forgotForm input,
+#codeForm input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+#forgotForm button,
+#codeForm button {
+  background: #005f73;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#forgotForm button:hover,
+#codeForm button:hover {
+  background: #004052;
+}
 /* Textarea */
 textarea {
   resize: none;
