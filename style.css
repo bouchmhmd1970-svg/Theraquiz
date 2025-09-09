@@ -1,4 +1,4 @@
-ن/*========== GlobalEdu UI – منصة دراسية عالمية ==========*/
+/*========== GlobalEdu UI – منصة طبية عالمية ==========*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -27,40 +27,7 @@ body {
   flex-direction: column;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 48px;
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: 0 4px 20px var(--shadow);
-  animation: fadeIn 0.6s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-h1, h2, h3 {
-  font-weight: 600;
-  margin-bottom: 24px;
-  color: var(--text);
-}
-
-h1 {
-  font-size: 2.5rem;
-  text-align: center;
-  letter-spacing: -1px;
-}
-
-button {
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Header – شبيه بـ Coursera */
-.header {
+.global-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -81,69 +48,15 @@ button {
   margin-left: 12px;
 }
 
-/* Hero – شبيه بـ AMBOSS */
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #f8f9fa, #ffffff);
-  border-radius: var(--radius);
-  margin-bottom: 60px;
+.global-main {
+  padding: 0 40px;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 16px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  color: var(--text-sub);
-  margin-bottom: 32px;
-}
-
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 18px 40px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: #004052;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: var(--secondary);
-  color: #000;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.25);
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: #e6c200;
-  transform: translateY(-2px);
-}
-
-/* أزرار المميزات – شبيهة بـ Coursera */
-.feature-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
   margin-top: 40px;
-  justify-content: center;
 }
 
 .card {
@@ -154,8 +67,6 @@ button {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  flex: 1 1 250px;
-  max-width: 280px;
 }
 
 .card:hover {
@@ -178,163 +89,16 @@ button {
   color: var(--text-sub);
 }
 
+.global-footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  color: var(--text-sub);
+  margin-top: 60px;
+}
+
 /* Dark Mode */
 body.dark {
   --bg: #0d1b2a;
   --card: #415a77;
-  --text: #e0e1dd;
-  --text-sub: #778da9;
-  --shadow: rgba(0, 0, 0, 0.25);
-}
-
-body.dark .card,
-body.dark input,
-body.dark select,
-body.dark textarea {
-  background: #415a77;
-  color: #e0e1dd;
-  border-color: #778da9;
-}
-
-body.dark .options label {
-  background: #778da9;
-  color: #e0e1dd;
-}
-
-body.dark .options label:hover {
-  background: #5c677d;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .container {
-    padding: 24px; 
-    margin: 20px;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  button {
-    width: 100%;
-  }
-  }
-/*========== AI StudyRoom – واجهة كبيرة – ذكاء اصطناعي ==========*/
-.study-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.study-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #000;
-  color: #fff;
-  text-align: center;
-}
-
-.bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
-}
-
-.timer-container {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 40px;
-}
-
-.timer {
-  font-size: 120px;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-  letter-spacing: 4px;
-}
-
-.status {
-  font-size: 24px;
-  color: #e0e0e0;
-  margin-top: 10px;
-}
-
-.setup {
-  position: relative;
-  z-index: 2;
-  margin-bottom: 40px;
-}
-
-.setup h2 {
-  font-size: 32px;
-  margin-bottom: 24px;
-  color: #ffffff;
-}
-
-.time-options {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.time-btn {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 16px 32px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.time-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.stop-btn {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.stop-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.info {
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-
+  --text: #e0e
