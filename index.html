@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>TheraQuiz – منصة طبية عالمية</title>
+  <title>TheraQuiz Global – منصة طبية عالمية</title>
   <link rel="stylesheet" href="style.css">
 
   <!-- PWA -->
@@ -10,46 +10,40 @@
   <meta name="theme-color" content="#005f73">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="TheraQuiz">
+  <meta name="apple-mobile-web-app-title" content="TheraQuiz Global">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 </head>
-<body>
-  <!-- Header عالمي -->
-  <header class="header">
-    <div class="logo">TheraQuiz</div>
+<body class="global-body">
+
+  <!-- Header – شبيه بـ MedSpaceDZ -->
+  <header class="global-header">
+    <div class="logo">TheraQuiz Global</div>
     <div class="actions">
-      <button class="btn-secondary" onclick="window.open('profile-full.html', '_blank')">👤 ملفي</button>
-      <button class="btn-secondary" onclick="window.open('secure-register.html', '_blank')">🔐 اشتراك</button>
+      <button class="btn-icon" onclick="window.open('profile-full.html', '_blank')">👤</button>
+      <button class="btn-icon" onclick="window.open('secure-register.html', '_blank')">🔐</button>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>🎓 منصة طبية عالمية – بالدارجة الجزائرية</h1>
-    <p>دراسة – امتحانات – ذاكرة – شطرنج – كل شيء طبي – بكل بساطة.</p>
-    <button class="btn-primary" onclick="window.open('study.html', '_blank')">🚀 ابدأ الآن</button>
-  </section>
-
-  <!-- المميزات الأساسية -->
-  <section class="features">
+  <!-- القائمة الرئيسية – شبيهة بـ MedSpaceDZ -->
+  <main class="global-main">
     <h2>المميزات الأساسية</h2>
-    <div class="cards">
+    <div class="cards-grid">
       <div class="card" onclick="window.open('study.html', '_blank')">
         <div class="icon">🧑‍⚕️</div>
-        <h3>دراسة مع شخص افتراضي</h3>
-        <p>دراسة هادئة مع شخص افتراضي – بوقت محدد – بنقاط.</p>
+        <h3>دراسة مع ذكاء اصطناعي</h3>
+        <p>طالب في مكتبة – عداد تنازلي – ذكاء اصطناعي – نقاط.</p>
       </div>
       <div class="card" onclick="window.open('exam.html', '_blank')">
         <div class="icon">🎯</div>
         <h3>محاكي الامتحان</h3>
-        <p>امتحان طبي حقيقي – بوقت محدد – بشهادة PDF.</p>
+        <p>امتحان طبي – وقته محدود – شهادة PDF – رتبة.</p>
       </div>
       <div class="card" onclick="window.open('medchess.html', '_blank')">
         <div class="icon">♟️</div>
         <h3>شطرنج طبي</h3>
-        <p>شطرنج بـ رموز طبية – كل نقلة = نقاط.</p>
+        <p>شطرنج برموز طبية – كل نقلة = نقاط – ذكاء.</p>
       </div>
       <div class="card" onclick="window.open('memomed.html', '_blank')">
         <div class="icon">🧠</div>
@@ -57,21 +51,11 @@
         <p>ذاكرة الأزواج الطبية – اكسب نقاط – استرخي.</p>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- أزرار التنقل -->
-  <section class="nav-section">
-    <h2>اكتشف المزيد</h2>
-    <div class="nav-buttons">
-      <button class="btn-secondary" onclick="window.open('profile-full.html', '_blank')">👤 ملفي الشخصي</button>
-      <button class="btn-secondary" onclick="window.open('idea.html', '_blank')">💡 شاركنا فكرتك</button>
-      <button class="btn-secondary" onclick="window.open('secure-register.html', '_blank')">🔐 اشتراك</button>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 TheraQuiz – منصة طبية بالدارجة الجزائرية</p>
+  <!-- Footer – بسيط – عالمي -->
+  <footer class="global-footer">
+    <p>© 2025 TheraQuiz Global – منصة طبية بالدارجة الجزائرية</p>
   </footer>
 
   <!-- Scripts -->
@@ -92,9 +76,9 @@
     // PWA check
     window.addEventListener("load", () => {
       if (window.matchMedia("(display-mode: standalone)").matches) {
-        alert("🎉 مرحباً بك في تطبيق TheraQuiz – منصة طبية عالمية!");
+        alert("🎉 مرحباً بك في تطبيق TheraQuiz Global – منصة طبية عالمية!");
       }
     });
   </script>
 </body>
-    </html>
+</html>
