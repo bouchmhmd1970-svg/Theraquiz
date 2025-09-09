@@ -1,4 +1,4 @@
-  /*========== GlobalEdu UI – منصة دراسية عالمية ==========*/
+/*========== GlobalEdu UI – منصة دراسية عالمية ==========*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -59,44 +59,67 @@ button {
   transition: all 0.3s ease;
 }
 
-/* أزرار المميزات – شبيهة بـ Coursera */
-.feature-buttons {
+/* Header – شبيه بـ Coursera */
+.header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 40px;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: var(--card);
+  box-shadow: 0 2px 8px var(--shadow);
+  border-radius: var(--radius);
+  margin-bottom: 40px;
 }
 
-.feature-buttons button {
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.actions button {
+  margin-left: 12px;
+}
+
+/* Hero – شبيه بـ AMBOSS */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: var(--radius);
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-sub);
+  margin-bottom: 32px;
+}
+
+.btn-primary {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 16px 32px;
+  padding: 18px 40px;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 95, 115, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
   transition: all 0.3s ease;
 }
 
-.feature-buttons button:hover {
+.btn-primary:hover {
   background: #004052;
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
 }
 
-/* أزرار التنقل – بسيطة ومريحة */
-.main-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 30px;
-  justify-content: center;
-}
-
-.main-buttons button {
+.btn-secondary {
   background: var(--secondary);
   color: #000;
   border: none;
@@ -109,171 +132,50 @@ button {
   transition: all 0.3s ease;
 }
 
-.main-buttons button:hover {
-  background: #e6c200;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(255, 221, 0, 0.35);
-}
-
-/* زر تحميل التطبيق */
-.install-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 14px 24px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
-  z-index: 999;
-  display: none;
-}
-
-.install-btn:hover {
-  background: #004052;
-  transform: translateY(-2px);
-}
-
-/* صفحات Profile */
-.profile-container,
-.secure-container {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.profile-section {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  background: var(--card);
-  padding: 32px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 20px var(--shadow);
-}
-
-#avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--primary);
-}
-
-.section-card {
-  background: var(--card);
-  padding: 32px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 20px var(--shadow);
-}
-
-.sub-card,
-.cert-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  margin: 12px 0;
-  background: #f8f9fa;
-  border-radius: 8px;
-  border-left: 4px solid var(--primary);
-}
-
-.status.active {
-  color: #28a745;
-  font-weight: 500;
-}
-
-.status.expired {
-  color: #dc3545;
-  font-weight: 500;
-}
-
-/* IdeaBox */
-#ideaForm label {
-  display: block;
-  margin: 16px 0 6px;
-  font-weight: 500;
-}
-
-#ideaForm input,
-#ideaForm select,
-#ideaForm textarea {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 16px;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-}
-
-#ideaForm button {
-  background: var(--secondary);
-  color: #000;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.25);
-  transition: all 0.3s ease;
-}
-
-#ideaForm button:hover {
+.btn-secondary:hover {
   background: #e6c200;
   transform: translateY(-2px);
 }
 
-#success {
-  margin-top: 20px;
-  padding: 16px;
-  background: #f0f9ff;
-  border-left: 5px solid var(--primary);
-  border-radius: 8px;
-  font-weight: 500;
-  color: var(--text);
+/* أزرار المميزات – شبيهة بـ Coursera */
+.feature-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+  justify-content: center;
 }
 
-/* Secure Register */
-.secure-container input,
-.secure-container select,
-.secure-container textarea {
-  margin-bottom: 16px;
-}
-
-.secure-container button {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
+.card {
+  background: var(--card);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px var(--shadow);
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 95, 115, 0.25);
   transition: all 0.3s ease;
-}
-
-.secure-container button:hover {
-  background: #004052;
-  transform: translateY(-2px);
-}
-
-.loading {
   text-align: center;
-  font-size: 18px;
-  color: var(--primary);
-  margin-top: 20px;
+  flex: 1 1 250px;
+  max-width: 280px;
 }
 
-.error {
-  color: #dc3545;
-  font-weight: 500;
-  margin-top: 10px;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px var(--shadow);
+}
+
+.card .icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--text-sub);
 }
 
 /* Dark Mode */
@@ -315,4 +217,4 @@ body.dark .options label:hover {
   button {
     width: 100%;
   }
-}
+  }
