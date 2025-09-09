@@ -75,7 +75,7 @@
   </div>
 
   <script>
-    // عند تحميل الصفحة، إذا كان هناك بيانات محفوظة
+    // إذا كان هناك بيانات محفوظة
     window.onload = function() {
       const savedUser = localStorage.getItem("username");
       const savedPass = localStorage.getItem("password");
@@ -91,7 +91,7 @@
       pass.type = (pass.type === "password") ? "text" : "password";
     }
 
-    // تسجيل الدخول + حفظ البيانات في localStorage
+    // تسجيل الدخول + حفظ البيانات
     document.getElementById("loginForm").addEventListener("submit", function(e){
       e.preventDefault();
       const user = document.getElementById("username").value;
