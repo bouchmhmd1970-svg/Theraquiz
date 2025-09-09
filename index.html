@@ -26,54 +26,97 @@
 
     <!-- Main Content -->
     <main class="content">
+      <!-- Profil -->
       <section id="profil" class="section active">
         <h1>👤 Profil</h1>
-        <p>هنا يبان ملفك الشخصي.</p>
+        <form>
+          <label>Nom complet:</label>
+          <input type="text" placeholder="أحمد بومحمد">
+
+          <label>Email:</label>
+          <input type="email" placeholder="exemple@mail.com">
+
+          <label>Téléphone:</label>
+          <input type="tel" placeholder="06xx xx xx xx">
+
+          <button type="submit">💾 Sauvegarder</button>
+        </form>
       </section>
 
+      <!-- Abonnement -->
       <section id="abonnement" class="section">
         <h1>🔐 Abonnement</h1>
-        <p>إدارة الاشتراك تاعك.</p>
+        <p>إدارة اشتراكك:</p>
+        <button>➕ Ajouter un abonnement</button>
+        <button>✏️ Modifier mon abonnement</button>
       </section>
 
+      <!-- Statistiques -->
       <section id="statistiques" class="section">
         <h1>📊 Statistiques</h1>
-        <p>إحصائيات التقدم والنتائج.</p>
+        <p>Progression générale:</p>
+        <ul>
+          <li>✅ Quiz réussis: 10</li>
+          <li>📚 Cours suivis: 5</li>
+          <li>⭐ Score global: 85%</li>
+        </ul>
       </section>
 
+      <!-- Idée -->
       <section id="idee" class="section">
         <h1>💡 Idée</h1>
-        <p>شاركنا اقتراحاتك.</p>
+        <form>
+          <label>شارك فكرتك:</label>
+          <textarea rows="4" placeholder="اكتب اقتراحك هنا..."></textarea>
+          <button type="submit">📩 Envoyer</button>
+        </form>
       </section>
 
+      <!-- Study -->
       <section id="study" class="section">
         <h1>📚 Study with me</h1>
-        <p>جلسة مراجعة مع الآخرين.</p>
+        <p>جلسة تركيز لمدة 25 دقيقة ⏳</p>
+        <button>▶️ Commencer</button>
       </section>
 
+      <!-- Examen -->
       <section id="examen" class="section">
         <h1>📝 Simuler un examen</h1>
-        <p>محاكاة امتحان كما في الواقع.</p>
+        <p>Choisissez la matière:</p>
+        <select>
+          <option>Endocrinologie</option>
+          <option>Psychiatrie</option>
+          <option>Néphrologie</option>
+        </select>
+        <button>🚀 Démarrer</button>
       </section>
 
+      <!-- Cours -->
       <section id="cours" class="section">
         <h1>📖 Cours</h1>
-        <p>قائمة الدروس.</p>
+        <ul>
+          <li>📘 Endocrinologie</li>
+          <li>📗 Psychiatrie</li>
+          <li>📙 Néphrologie</li>
+        </ul>
       </section>
 
+      <!-- Quiz -->
       <section id="quiz" class="section">
         <h1>📝 Quiz</h1>
-        <p>اختبارات متعددة الخيارات.</p>
+        <button>📍 Commencer un quiz</button>
       </section>
 
+      <!-- Playlists -->
       <section id="playlist" class="section">
         <h1>🎶 Playlists</h1>
         <p>قائمة الفيديوهات التعليمية.</p>
       </section>
 
+      <!-- Notes -->
       <section id="notes" class="section">
         <h1>🗒️ Mes notes</h1>
-        <p>ملاحظاتك وحوايجك الخاصة.</p>
+        <textarea rows="6" placeholder="اكتب ملاحظاتك هنا..."></textarea>
       </section>
     </main>
   </div>
@@ -85,4 +128,4 @@
     }
   </script>
 </body>
-  </html>
+        </html>
