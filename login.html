@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>TheraQuiz – Connexion</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { margin:0; font-family: Arial,sans-serif; background:#f4f6f9; }
+    .login-container {
+      width: 350px;
+      margin: 120px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .login-container h1 { margin-bottom: 25px; color: #0a192f; }
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #00b4d8;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    .login-container button:hover { background: #0077b6; }
+    .password-wrapper { position: relative; }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #555;
+    }
+    .forgot {
+      display: block;
+      text-align: right;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #00b4d8;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .forgot:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>🔐 Connexion</h1>
+    <form id="loginForm">
+      <label>Email ou Téléphone:</label>
+      <input type="text" id="username" placeholder="exemple@mail.com ou 06xx xx xx xx" required>
+
+      <label>Mot de passe:</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Mot de passe" required>
+        <span class="toggle-password" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <a href="#" class="forgot">Mot de passe oublié ?</a>
+
+      <button type="submit">➡️ Se connecter</button>
+    </form>
+  </div>
+
+  <script>
+    // Toggle password
+    function togglePassword() {
+      const pass = document.getElementById("password");
+      pass.type = (pass.type === "password") ? "text" : "password";
+    }
+
+    // Login simulation
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      alert("Connexion réussie !");
+      window.location.href = "index.html"; // redirection vers Dashboard
+    });
+
+    // Forgot password simulation
+    document.querySelector(".forgot").addEventListener("click", function(e){
+      e.preventDefault();
+      const user = document.getElementById("username").value;
+      if(user) {
+        alert("Un email de réinitialisation a été envoyé à : " + user);
+      } else {
+        alert("Veuillez entrer votre email ou numéro de téléphone !");
+      }
+    });
+  </script>
+</body>
+          </html>
