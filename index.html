@@ -6,7 +6,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
+  <!-- Login Section -->
+  <div class="login-container" id="loginContainer">
+    <h2>TheraQuiz</h2>
+    <form id="loginForm">
+      <label>Email ou Téléphone:</label>
+      <input type="text" id="emailPhone" placeholder="اكتب الايميل أو الهاتف" required>
+
+      <label>Mot de passe:</label>
+      <div class="password-field">
+        <input type="password" id="password" placeholder="كلمة السر" required>
+        <span id="togglePassword">👁️</span>
+      </div>
+
+      <button type="submit">🔑 Se connecter</button>
+      <p class="forgot">نسيت كلمة السر؟ <span id="forgotPassword">اضغط هنا</span></p>
+    </form>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="app" id="dashboard" style="display:none;">
     <!-- Sidebar -->
     <aside class="sidebar">
       <h2 class="logo">TheraQuiz</h2>
@@ -122,10 +141,38 @@
   </div>
 
   <script>
+    // Toggle password
+    const togglePassword = document.getElementById("togglePassword");
+    const password = document.getElementById("password");
+
+    togglePassword.addEventListener("click", () => {
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+    });
+
+    // Login form
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      // هنا تقدر تزيد تحقق من البيانات
+      document.getElementById("loginContainer").style.display = "none";
+      document.getElementById("dashboard").style.display = "flex";
+    });
+
+    // Sidebar section switch
     function showSection(id) {
       document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
       document.getElementById(id).classList.add("active");
     }
+
+    // Forgot password (simple alert)
+    document.getElementById("forgotPassword").addEventListener("click", () => {
+      const emailPhone = document.getElementById("emailPhone").value;
+      if(emailPhone) {
+        alert("Un code de confirmation a été envoyé à " + emailPhone);
+      } else {
+        alert("اكتب الايميل أو رقم الهاتف تاعك");
+      }
+    });
   </script>
 </body>
-        </html>
+  </html>
