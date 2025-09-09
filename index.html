@@ -1,228 +1,170 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>TheraQuiz – منصة تعليمية</title>
-  <style>
-    /* ====== Reset & basic ====== */
-    * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
-    body {background:#f0f2f5;}
-    button {cursor:pointer;}
+/*========== GlobalEdu UI – منصة طبية عالمية ==========*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-    /* ====== Login ====== */
-    .login-container {
-      width: 350px;
-      margin: 100px auto;
-      background:#fff; padding:30px; border-radius:8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .login-container h2 {text-align:center; margin-bottom:20px;}
-    .login-container input {
-      width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px;
-    }
-    .password-field {position:relative;}
-    #togglePassword {
-      position:absolute; right:10px; top:12px; cursor:pointer;
-    }
-    .login-container button {
-      width:100%; padding:10px; margin-top:10px; background:#007bff; color:#fff; border:none; border-radius:5px;
-    }
-    .login-container .forgot {margin-top:10px; text-align:right; font-size:0.9em;}
-    .login-container .forgot span {color:#007bff; cursor:pointer;}
+:root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --primary: #005f73;
+  --secondary: #ffdd00;
+  --text: #001219;
+  --text-sub: #495057;
+  --shadow: rgba(0, 18, 25, 0.06);
+  --radius: 12px;
+}
 
-    /* ====== Dashboard ====== */
-    .app {display:none; flex-wrap:nowrap; min-height:100vh;}
-    .sidebar {width:200px; background:#007bff; color:#fff; padding:20px;}
-    .sidebar .logo {text-align:center; margin-bottom:20px;}
-    .sidebar ul {list-style:none;}
-    .sidebar ul li {padding:10px 0; cursor:pointer;}
-    .sidebar ul li:hover {background:rgba(255,255,255,0.2);}
-    .content {flex:1; padding:20px;}
-    .section {display:none;}
-    .section.active {display:block;}
-    .section h1 {margin-bottom:15px;}
-    .section input, .section textarea, .section select, .section button {margin:5px 0; padding:8px;}
-  </style>
-</head>
-<body>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Login Section -->
-  <div class="login-container" id="loginContainer">
-    <h2>TheraQuiz</h2>
-    <form id="loginForm">
-      <label>Email ou Téléphone:</label>
-      <input type="text" id="emailPhone" placeholder="اكتب الايميل أو الهاتف" required>
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-      <label>Mot de passe:</label>
-      <div class="password-field">
-        <input type="password" id="password" placeholder="كلمة السر" required>
-        <span id="togglePassword">👁️</span>
-      </div>
+/* Header – شبيه بـ MedSpaceDZ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: var(--card);
+  box-shadow: 0 2px 8px var(--shadow);
+  border-radius: var(--radius);
+  margin-bottom: 40px;
+}
 
-      <button type="submit">🔑 Se connecter</button>
-      <p class="forgot">نسيت كلمة السر؟ <span id="forgotPassword">اضغط هنا</span></p>
-    </form>
-  </div>
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+}
 
-  <!-- Dashboard -->
-  <div class="app" id="dashboard">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <h2 class="logo">TheraQuiz</h2>
-      <ul>
-        <li onclick="showSection('profil')">👤 Profil</li>
-        <li onclick="showSection('abonnement')">🔐 Abonnement</li>
-        <li onclick="showSection('statistiques')">📊 Statistiques</li>
-        <li onclick="showSection('idee')">💡 Idée</li>
-        <li onclick="showSection('study')">📚 Study with me</li>
-        <li onclick="showSection('examen')">📝 Simuler un examen</li>
-        <li onclick="showSection('cours')">📖 Cours</li>
-        <li onclick="showSection('quiz')">📝 Quiz</li>
-        <li onclick="showSection('playlist')">🎶 Playlists</li>
-        <li onclick="showSection('notes')">🗒️ Mes notes</li>
-      </ul>
-    </aside>
+.actions button {
+  margin-left: 12px;
+}
 
-    <!-- Main Content -->
-    <main class="content">
-      <!-- Profil -->
-      <section id="profil" class="section active">
-        <h1>👤 Profil</h1>
-        <form>
-          <label>Nom complet:</label>
-          <input type="text" placeholder="أحمد بومحمد">
-          <label>Email:</label>
-          <input type="email" placeholder="exemple@mail.com">
-          <label>Téléphone:</label>
-          <input type="tel" placeholder="06xx xx xx xx">
-          <button type="submit">💾 Sauvegarder</button>
-        </form>
-      </section>
+/* Main – شبيه بـ MedSpaceDZ */
+.main {
+  padding: 0 40px;
+}
 
-      <!-- Abonnement -->
-      <section id="abonnement" class="section">
-        <h1>🔐 Abonnement</h1>
-        <p>إدارة اشتراكك:</p>
-        <button>➕ Ajouter un abonnement</button>
-        <button>✏️ Modifier mon abonnement</button>
-      </section>
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
 
-      <!-- Statistiques -->
-      <section id="statistiques" class="section">
-        <h1>📊 Statistiques</h1>
-        <p>Progression générale:</p>
-        <ul>
-          <li>✅ Quiz réussis: 10</li>
-          <li>📚 Cours suivis: 5</li>
-          <li>⭐ Score global: 85%</li>
-        </ul>
-      </section>
+.card {
+  background: var(--card);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px var(--shadow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
 
-      <!-- Idée -->
-      <section id="idee" class="section">
-        <h1>💡 Idée</h1>
-        <form>
-          <label>شارك فكرتك:</label>
-          <textarea rows="4" placeholder="اكتب اقتراحك هنا..."></textarea>
-          <button type="submit">📩 Envoyer</button>
-        </form>
-      </section>
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px var(--shadow));
+}
 
-      <!-- Study -->
-      <section id="study" class="section">
-        <h1>📚 Study with me</h1>
-        <p>جلسة تركيز لمدة 25 دقيقة ⏳</p>
-        <button>▶️ Commencer</button>
-      </section>
+.card .icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
 
-      <!-- Examen -->
-      <section id="examen" class="section">
-        <h1>📝 Simuler un examen</h1>
-        <p>Choisissez la matière:</p>
-        <select>
-          <option>Endocrinologie</option>
-          <option>Psychiatrie</option>
-          <option>Néphrologie</option>
-        </select>
-        <button>🚀 Démarrer</button>
-      </section>
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
 
-      <!-- Cours -->
-      <section id="cours" class="section">
-        <h1>📖 Cours</h1>
-        <ul>
-          <li>📘 Endocrinologie</li>
-          <li>📗 Psychiatrie</li>
-          <li>📙 Néphrologie</li>
-        </ul>
-      </section>
+.card p {
+  font-size: 1rem;
+  color: var(--text-sub);
+}
 
-      <!-- Quiz -->
-      <section id="quiz" class="section">
-        <h1>📝 Quiz</h1>
-        <button>📍 Commencer un quiz</button>
-      </section>
+/* أزرار – بسيطة – عالمية – لا وهج */
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
+  transition: all 0.3s ease;
+}
 
-      <!-- Playlists -->
-      <section id="playlist" class="section">
-        <h1>🎶 Playlists</h1>
-        <p>قائمة الفيديوهات التعليمية.</p>
-      </section>
+.btn-primary:hover {
+  background: #004052;
+  transform: translateY(-2px);
+}
 
-      <!-- Notes -->
-      <section id="notes" class="section">
-        <h1>🗒️ Mes notes</h1>
-        <textarea rows="6" placeholder="اكتب ملاحظاتك هنا..."></textarea>
-      </section>
-    </main>
-  </div>
+.btn-secondary {
+  background: var(--secondary);
+  color: #000;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.25);
+  transition: all 0.3s ease;
+}
 
-  <script>
-    // ===== Users data =====
-    const users = [
-      { email: "test@mail.com", password: "1234" },
-      { email: "hiba@mail.com", password: "abcd" }
-    ];
+.btn-secondary:hover {
+  background: #e6c200;
+  transform: translateY(-2px);
+}
 
-    // ===== Toggle password =====
-    const togglePassword = document.getElementById("togglePassword");
-    const password = document.getElementById("password");
+/* Dark Mode */
+body.dark {
+  --bg: #0d1b2a;
+  --card: #415a77;
+  --text: #e0e1dd;
+  --text-sub: #778da9;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
 
-    togglePassword.addEventListener("click", () => {
-      const type = password.getAttribute("type") === "password" ? "text" : "password";
-      password.setAttribute("type", type);
-    });
+body.dark .card,
+body.dark input,
+body.dark select,
+body.dark textarea {
+  background: #415a77;
+  color: #e0e1dd;
+  border-color: #778da9;
+}
 
-    // ===== Login form =====
-    document.getElementById("loginForm").addEventListener("submit", function(e){
-      e.preventDefault();
-      const emailPhone = document.getElementById("emailPhone").value;
-      const pass = document.getElementById("password").value;
+body.dark .options label {
+  background: #778da9;
+  color: #e0e1dd;
+}
 
-      const user = users.find(u => u.email === emailPhone && u.password === pass);
-      if(user){
-        document.getElementById("loginContainer").style.display = "none";
-        document.getElementById("dashboard").style.display = "flex";
-      } else {
-        alert("الإيميل أو كلمة السر غير صحيحة");
-      }
-    });
+body.dark .options label:hover {
+  background: #5c677d;
+}
 
-    // ===== Sidebar section switch =====
-    function showSection(id) {
-      document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-    }
-
-    // ===== Forgot password (simple) =====
-    document.getElementById("forgotPassword").addEventListener("click", () => {
-      const emailPhone = document.getElementById("emailPhone").value;
-      if(emailPhone){
-        alert("Un code de confirmation a été envoyé à " + emailPhone + " (مثال: 1234)");
-      } else {
-        alert("اكتب الايميل أو رقم الهاتف تاعك");
-      }
-    });
-  </script>
-</body>
-  </html>
+/* Responsive */
+@media (max-width: 600px) {
+  .container {
+    padding: 24px;
+    margin: 20px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  button {
+    width: 100%;
+  }
+}
