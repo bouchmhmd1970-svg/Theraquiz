@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>TheraQuiz – Connexion</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body { margin:0; font-family: Arial,sans-serif; background:#f4f6f9; }
     .login-container {
@@ -76,20 +75,40 @@
   </div>
 
   <script>
+    // عند تحميل الصفحة، إذا كان هناك بيانات محفوظة
+    window.onload = function() {
+      const savedUser = localStorage.getItem("username");
+      const savedPass = localStorage.getItem("password");
+      if(savedUser && savedPass){
+        document.getElementById("username").value = savedUser;
+        document.getElementById("password").value = savedPass;
+      }
+    }
+
     // Toggle password
     function togglePassword() {
       const pass = document.getElementById("password");
       pass.type = (pass.type === "password") ? "text" : "password";
     }
 
-    // Login simulation
+    // تسجيل الدخول + حفظ البيانات في localStorage
     document.getElementById("loginForm").addEventListener("submit", function(e){
       e.preventDefault();
-      alert("Connexion réussie !");
-      window.location.href = "index.html"; // redirection vers Dashboard
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      if(user && pass){
+        localStorage.setItem("username", user);
+        localStorage.setItem("password", pass);
+
+        alert("Connexion réussie !");
+        window.location.href = "index.html"; // فتح Dashboard
+      } else {
+        alert("Veuillez remplir tous les champs !");
+      }
     });
 
-    // Forgot password simulation
+    // نسيت كلمة السر
     document.querySelector(".forgot").addEventListener("click", function(e){
       e.preventDefault();
       const user = document.getElementById("username").value;
@@ -101,4 +120,4 @@
     });
   </script>
 </body>
-          </html>
+</html>
