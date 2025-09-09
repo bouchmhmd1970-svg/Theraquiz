@@ -1,170 +1,53 @@
-/*========== GlobalEdu UI – منصة طبية عالمية ==========*/
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>EduGlobal – منصة تعليمية</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-:root {
-  --bg: #ffffff;
-  --card: #ffffff;
-  --primary: #005f73;
-  --secondary: #ffdd00;
-  --text: #001219;
-  --text-sub: #495057;
-  --shadow: rgba(0, 18, 25, 0.06);
-  --radius: 12px;
-}
+  <!-- ====== Header ====== -->
+  <header>
+    <h1>EduGlobal</h1>
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#">Cours</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <!-- ====== Hero Section ====== -->
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Apprends sans frontières 🌍</h2>
+      <p>منصّة تعليمية عالمية تقدم لك محتوى احترافي باللغات المختلفة، مع أساتذة وخبراء من جميع أنحاء العالم.</p>
+      <button>ابدأ الآن</button>
+    </div>
+    <img src="https://cdn.pixabay.com/photo/2017/01/10/19/05/learn-1966014_960_720.jpg" alt="Education">
+  </section>
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+  <!-- ====== Features ====== -->
+  <section class="features">
+    <div class="card">
+      <h3>📚 دورات متنوعة</h3>
+      <p>مكتبة ضخمة من الكورسات في مختلف المجالات.</p>
+    </div>
+    <div class="card">
+      <h3>🌐 خبراء عالميون</h3>
+      <p>أساتذة من جامعات عالمية يقدمون محتوى عالي الجودة.</p>
+    </div>
+    <div class="card">
+      <h3>⚡ تعلم سريع</h3>
+      <p>منهجيات حديثة تضمن لك التعلم بفعالية وسرعة.</p>
+    </div>
+  </section>
 
-/* Header – شبيه بـ MedSpaceDZ */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: var(--card);
-  box-shadow: 0 2px 8px var(--shadow);
-  border-radius: var(--radius);
-  margin-bottom: 40px;
-}
+  <!-- ====== Footer ====== -->
+  <footer>
+    <p>© 2025 EduGlobal – Tous droits réservés</p>
+  </footer>
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.actions button {
-  margin-left: 12px;
-}
-
-/* Main – شبيه بـ MedSpaceDZ */
-.main {
-  padding: 0 40px;
-}
-
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.card {
-  background: var(--card);
-  padding: 32px;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 20px var(--shadow);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px var(--shadow));
-}
-
-.card .icon {
-  font-size: 48px;
-  margin-bottom: 16px;
-}
-
-.card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
-}
-
-.card p {
-  font-size: 1rem;
-  color: var(--text-sub);
-}
-
-/* أزرار – بسيطة – عالمية – لا وهج */
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 18px 40px;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0, 95, 115, 0.25);
-  transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-  background: #004052;
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  background: var(--secondary);
-  color: #000;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(255, 221, 0, 0.25);
-  transition: all 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background: #e6c200;
-  transform: translateY(-2px);
-}
-
-/* Dark Mode */
-body.dark {
-  --bg: #0d1b2a;
-  --card: #415a77;
-  --text: #e0e1dd;
-  --text-sub: #778da9;
-  --shadow: rgba(0, 0, 0, 0.25);
-}
-
-body.dark .card,
-body.dark input,
-body.dark select,
-body.dark textarea {
-  background: #415a77;
-  color: #e0e1dd;
-  border-color: #778da9;
-}
-
-body.dark .options label {
-  background: #778da9;
-  color: #e0e1dd;
-}
-
-body.dark .options label:hover {
-  background: #5c677d;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .container {
-    padding: 24px;
-    margin: 20px;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  button {
-    width: 100%;
-  }
-}
+</body>
+</html>
