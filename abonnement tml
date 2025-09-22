@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Abonnement - TheraQuiz</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header><h1>Abonnement</h1></header>
+  <main>
+    <h2>Choisissez votre année</h2>
+    <form>
+      <select>
+        <option>1ère année - 1000 DA</option>
+        <option>2ème année - 1000 DA</option>
+        <option>3ème année - 1000 DA</option>
+        <option>4ème année - 1000 DA</option>
+        <option>5ème année - 1000 DA</option>
+        <option>6ème année - 1000 DA</option>
+        <option>Résidanat - 1000 DA</option>
+      </select>
+      <p>Importez votre reçu :</p>
+      <input type="file" accept="image/*">
+      <button type="submit">Envoyer</button>
+    </form>
+    <p>⏳ Validation sous 24h.</p>
+  </main>
+</body>
+</html>
