@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mes Notes - TheraQuiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    function saveNote() {
+      let note = document.getElementById("noteInput").value;
+      if(note.trim() === "") {
+        alert("Veuillez écrire une note !");
+        return;
+      }
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+      notes.push(note);
+      localStorage.setItem("notes", JSON.stringify(notes));
+      document.getElementById("noteInput").value = "";
+      loadNotes();
+    }
+
+    function loadNotes() {
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+      let list = document.getElementById("notesList");
+      list.innerHTML = "";
+      notes.forEach((n, i) => {
+        list.innerHTML += `<li>${n} <button onclick="deleteNote(${i})">🗑️</button></li>`;
+      });
+    }
+
+    function deleteNote(index) {
+      let notes = JSON.parse(localStorage.getItem("notes")) || [];
+      notes.splice(index, 1);
+      localStorage.setItem("notes", JSON.stringify(notes));
+      loadNotes();
+    }
+
+    window.onload = loadNotes;
+  </script>
+</head>
+<body>
+  <header><h1>Mes Notes</h1></header>
+  <main>
+    <textarea id="noteInput" placeholder="Écrivez vos notes ici..."></textarea><br>
+    <button onclick="saveNote()">Ajouter</button>
+    <h2>Mes notes enregistrées :</h2>
+    <ul id="notesList"></ul>
+  </main>
+</body>
+                                          </html>
