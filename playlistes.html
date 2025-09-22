@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Playlists - TheraQuiz</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    function addPlaylist() {
+      let name = document.getElementById("playlistName").value;
+      if(name.trim() === "") {
+        alert("Nom de playlist vide !");
+        return;
+      }
+      let playlists = JSON.parse(localStorage.getItem("playlists")) || [];
+      playlists.push({name, lessons: []});
+      localStorage.setItem("playlists", JSON.stringify(playlists));
+      document.getElementById("playlistName").value = "";
+      loadPlaylists();
+    }
+
+    function loadPlaylists() {
+      let playlists = JSON.parse(localStorage.getItem("playlists")) || [];
+      let list = document.getElementById("playlistsList");
+      list.innerHTML = "";
+      playlists.forEach((pl, i) => {
+        list.innerHTML += `<li>
+          <b>${pl.name}</b> 
+          <button onclick="deletePlaylist(${i})">🗑️</button>
+        </li>`;
+      });
+    }
+
+    function deletePlaylist(index) {
+      let playlists = JSON.parse(localStorage.getItem("playlists")) || [];
+      playlists.splice(index, 1);
+      localStorage.setItem("playlists", JSON.stringify(playlists));
+      loadPlaylists();
+    }
+
+    window.onload = loadPlaylists;
+  </script>
+</head>
+<body>
+  <header><h1>Playlists de cours</h1></header>
+  <main>
+    <input type="text" id="playlistName" placeholder="Nom de la playlist...">
+    <button onclick="addPlaylist()">Créer</button>
+
+    <h2>Mes playlists :</h2>
+    <ul id="playlistsList"></ul>
+  </main>
+</body>
+</html>
