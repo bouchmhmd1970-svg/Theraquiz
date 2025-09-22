@@ -1,92 +1,0 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>AI StudyRoom – دراسة مع ذكاء اصطناعي</title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body class="study-body">
-
-  <!-- واجهة كبيرة – لا حدود – عالمية -->
-  <div class="study-container">
-    <!-- خلفية فيديو: طالب في مكتبة (صامت) -->
-    <video id="bgVideo" autoplay muted loop class="bg-video">
-      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      متصفحك لا يدعم الفيديو.
-    </video>
-
-    <!-- عداد تنازلي كبير -->
-    <div class="timer-container">
-      <div class="timer" id="timer">25:00</div>
-      <div class="status">جارٍ الدراسة...</div>
-    </div>
-
-    <!-- اختيار الوقت -->
-    <div class="setup">
-      <h2>اختر وقت الدراسة</h2>
-      <div class="time-options">
-        <button class="time-btn" onclick="startStudy(25)">25 دقيقة</button>
-        <button class="time-btn" onclick="startStudy(45)">45 دقيقة</button>
-        <button class="time-btn" onclick="startStudy(60)">60 دقيقة</button>
-        <button class="time-btn" onclick="startStudy(90)">90 دقيقة</button>
-      </div>
-    </div>
-
-    <!-- زر إيقاف -->
-    <button class="stop-btn" onclick="stopStudy()">إيقاف الدراسة</button>
-
-    <!-- معلومات النقاط -->
-    <div class="info">
-      <span>نقاطك: <strong id="score">0</strong></span>
-      <button onclick="saveScore()">💾 حفظ النقاط</button>
-    </div>
-  </div>
-
-  <script>
-    let timeLeft;
-    let timerInterval;
-    let score = 0;
-
-    function startStudy(minutes) {
-      timeLeft = minutes * 60;
-      document.querySelector(".setup").style.display = "none";
-      document.querySelector(".stop-btn").style.display = "block";
-      document.querySelector(".info").style.display = "block";
-
-      updateTimer();
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        updateTimer();
-        if (timeLeft <= 0) {
-          stopStudy(true);
-        }
-      }, 1000);
-    }
-
-    function updateTimer() {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      document.getElementById("timer").textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    }
-
-    function stopStudy(completed = false) {
-      clearInterval(timerInterval);
-      document.querySelector(".stop-btn").style.display = "none";
-      document.querySelector(".info").style.display = "none";
-      document.querySelector(".setup").style.display = "block";
-
-      if (completed) {
-        score += minutes;
-        localStorage.setItem("studyScore", score);
-        alert("✅ أحسنت! لقد أكملت الدراسة – +" + minutes + " نقاط!");
-      }
-    }
-
-    function saveScore() {
-      localStorage.setItem("studyScore", score);
-      alert("✅ تم حفظ نقاطك – كيما ترجع للأنترنت، نزيدهم لحسابك داخل TherQuiz!");
-    }
-  </script>
-</body>
-</html>
