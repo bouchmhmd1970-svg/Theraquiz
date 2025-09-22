@@ -2,54 +2,53 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduGlobal</title>
-  <link rel="stylesheet" href="style.css">
+  <title>TheraQuiz - Accueil</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <!-- ====== Header ====== -->
   <header>
-    <h1>EduGlobal</h1>
+    <h1>TheraQuiz</h1>
     <nav>
-      <a href="#">Accueil</a>
-      <a href="#">Cours</a>
-      <a href="#">À propos</a>
-      <a href="#">Contact</a>
+      <button onclick="openPage('abonnement.html')">Abonnement</button>
+      <button onclick="requireLogin('quiz.html')">Quiz</button>
+      <button onclick="requireLogin('examen.html')">Exam Simulation</button>
+      <button onclick="requireLogin('notes.html')">Mes Notes</button>
+      <button onclick="requireLogin('playlists.html')">Playlists</button>
     </nav>
+    <div id="auth">
+      <button onclick="showForm('login')">Se connecter</button>
+      <button onclick="showForm('register')">S'inscrire</button>
+    </div>
   </header>
 
-  <!-- ====== Hero Section ====== -->
-  <section class="hero">
-    <div class="hero-text">
-      <h2>Apprends sans frontières 🌍</h2>
-      <p>
-        Une plateforme éducative mondiale qui offre du contenu professionnel dans différentes langues, 
-        avec des enseignants et experts du monde entier.
-      </p>
-      <button>Commencer maintenant</button>
-    </div>
-    <img src="https://cdn-icons-png.flaticon.com/512/906/906175.png" alt="Education">
-  </section>
+  <main>
+    <section class="welcome">
+      <h2>Bienvenue sur TheraQuiz 🎓</h2>
+      <p>Plateforme médicale interactive pour étudiants.</p>
+    </section>
+  </main>
 
-  <!-- ====== Features ====== -->
-  <section class="features">
-    <div class="card">
-      <h3>📚 Cours variés</h3>
-      <p>Une bibliothèque riche en cours dans divers domaines.</p>
-    </div>
-    <div class="card">
-      <h3>🌐 Experts mondiaux</h3>
-      <p>Des enseignants d’universités prestigieuses vous offrent un contenu de qualité.</p>
-    </div>
-    <div class="card">
-      <h3>⚡ Apprentissage rapide</h3>
-      <p>Des modules modernes pour un apprentissage efficace et rapide.</p>
-    </div>
-  </section>
-
-  <!-- ====== Footer ====== -->
   <footer>
-    <p>© 2025 EduGlobal – Tous droits réservés</p>
+    <p>📧 Email: contact@theraquiz.com | ☎️ 0555 55 55 55</p>
   </footer>
+
+  <!-- Forms cachés -->
+  <div id="loginForm" class="modal">
+    <h3>Connexion</h3>
+    <input type="text" id="loginUser" placeholder="Email">
+    <input type="password" id="loginPass" placeholder="Mot de passe">
+    <button onclick="login()">Valider</button>
+    <button onclick="closeForm()">Fermer</button>
+  </div>
+
+  <div id="registerForm" class="modal">
+    <h3>Inscription</h3>
+    <input type="text" placeholder="Nom complet">
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Mot de passe">
+    <button onclick="register()">S'inscrire</button>
+    <button onclick="closeForm()">Fermer</button>
+  </div>
 </body>
-</html>
+    </html>
